@@ -12,6 +12,8 @@
         .toast-enter { transform: translateY(100%); opacity: 0; }
         .toast-show { transform: translateY(0); opacity: 1; transition: all 0.3s ease; }
         .toast-hide { transform: translateY(100%); opacity: 0; transition: all 0.3s ease; }
+        /* Mobile Menu Drawer Animation */
+        #mobile-menu { transition: transform 0.3s ease-in-out; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900 selection:bg-rose-500 selection:text-white pb-20 sm:pb-0">
@@ -19,12 +21,17 @@
     <!-- Header -->
     <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <button class="md:hidden text-2xl hover:text-rose-600"><i class="fa-solid fa-arrow-left"></i></button>
+            <!-- Updated to Hamburger Menu instead of Back Arrow -->
+            <button id="menu-toggle-btn" class="md:hidden text-2xl hover:text-rose-600 transition focus:outline-none"><i class="fa-solid fa-bars"></i></button>
+            
             <a href="index.html" class="flex items-center gap-1 group">
                 <svg class="w-7 h-7 text-rose-600" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
                 <span class="text-2xl font-black tracking-tighter uppercase">CRAZY<span class="text-rose-600">.</span></span>
             </a>
+            
             <div class="flex items-center space-x-5 text-xl">
+                <!-- Added Search Icon -->
+                <button id="search-trigger-btn" class="hover:text-rose-600 transition focus:outline-none"><i class="fa-solid fa-magnifying-glass"></i></button>
                 <a href="wishlist.html" class="hover:text-rose-600 transition hidden sm:block"><i class="fa-regular fa-heart"></i></a>
                 <a href="cart.html" class="hover:text-rose-600 transition relative">
                     <i class="fa-bag-shopping fa-solid"></i>
@@ -33,6 +40,44 @@
             </div>
         </div>
     </header>
+
+    <!-- Mobile Slide-out Menu Drawer -->
+    <div id="mobile-menu" class="fixed inset-y-0 left-0 z-50 w-75 bg-black text-white transform -translate-x-full shadow-2xl flex flex-col justify-between p-6 md:hidden">
+        <div>
+            <div class="flex items-center justify-between pb-6 border-b border-gray-800">
+                <a href="index.html" class="text-2xl font-black tracking-tighter uppercase">CRAZY<span class="text-rose-600">.</span></a>
+                <button id="menu-close-btn" class="text-2xl text-gray-400 hover:text-white focus:outline-none"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            
+            <!-- Mobile Search Input inside Drawer -->
+            <div class="mt-6 flex">
+                <input type="text" id="mobile-search-input" placeholder="Search..." class="w-full bg-gray-900 border border-gray-800 px-4 py-3 rounded-l-xl focus:outline-none focus:border-rose-600 text-white text-sm font-medium">
+                <button id="mobile-search-submit-btn" class="bg-rose-600 text-white px-5 rounded-r-xl font-black hover:bg-rose-700 transition"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+
+            <nav class="flex flex-col space-y-5 mt-8 font-bold uppercase tracking-wider text-sm">
+                <a href="index.html" class="hover:text-rose-500 transition">Home</a>
+                <a href="shop.html" class="hover:text-rose-500 transition">Shop All</a>
+                <a href="anime.html" class="hover:text-rose-500 transition flex items-center justify-between">Anime Edit <span class="bg-rose-600 text-white text-[8px] px-1.5 py-0.5 rounded">HOT</span></a>
+                <a href="about.html" class="hover:text-rose-500 transition">Our Story</a>
+                <a href="profile.html" class="hover:text-rose-500 transition">My Account</a>
+                <a href="wishlist.html" class="hover:text-rose-500 transition">Wishlist</a>
+                <a href="contact.html" class="hover:text-rose-500 transition">Support & Contact</a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Search Modal Overlay -->
+    <div id="search-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-start justify-center pt-24 px-4">
+        <div class="bg-white w-full max-w-xl rounded-2xl p-6 shadow-2xl relative">
+            <button id="search-close-btn" class="absolute top-4 right-4 text-xl text-gray-500 hover:text-black focus:outline-none"><i class="fa-solid fa-xmark"></i></button>
+            <h3 class="font-black text-lg uppercase tracking-wider mb-4">Search Products</h3>
+            <div class="flex">
+                <input type="text" id="desktop-search-input" placeholder="Search oversized tees, anime editions..." class="w-full bg-gray-100 border border-gray-300 px-4 py-3 rounded-l-xl focus:outline-none focus:border-black font-medium">
+                <button id="desktop-search-submit-btn" class="bg-black text-white px-6 rounded-r-xl font-black uppercase hover:bg-rose-600 transition"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+        </div>
+    </div>
 
     <!-- Product Details -->
     <section class="py-6 sm:py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-white lg:bg-transparent rounded-3xl lg:rounded-none shadow-sm lg:shadow-none">
@@ -74,7 +119,7 @@
                 </div>
 
                 <p class="text-gray-600 text-sm sm:text-base font-medium leading-relaxed mb-6">
-                    Our signature oversized fit t-shirt made from 100% super-combed cotton. Heavyweight 240 GSM fabric ensures durability and the perfect streetwear drape. Bio-washed for ultimate softness.
+                    Our signature oversized fit t-shirt made from 100% super-combed cotton[cite: 13]. Heavyweight 240 GSM fabric ensures durability and the perfect streetwear drape[cite: 13]. Bio-washed for ultimate softness[cite: 13].
                 </p>
 
                 <!-- Color Options -->
@@ -195,10 +240,63 @@
         let cartCount = 2;
         let qty = 1;
 
+        // Mobile Menu Toggle Script
+        const menuToggleBtn = document.getElementById('menu-toggle-btn');
+        const menuCloseBtn = document.getElementById('menu-close-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        if(menuToggleBtn) {
+            menuToggleBtn.addEventListener('click', () => {
+                mobileMenu.classList.remove('-translate-x-full');
+            });
+        }
+
+        if(menuCloseBtn) {
+            menuCloseBtn.addEventListener('click', () => {
+                mobileMenu.classList.add('-translate-x-full');
+            });
+        }
+
+        // Search Modal Toggle Script
+        const searchTriggerBtn = document.getElementById('search-trigger-btn');
+        const searchModal = document.getElementById('search-modal');
+        const searchCloseBtn = document.getElementById('search-close-btn');
+        const desktopSearchSubmitBtn = document.getElementById('desktop-search-submit-btn');
+        const desktopSearchInput = document.getElementById('desktop-search-input');
+
+        if(searchTriggerBtn) {
+            searchTriggerBtn.addEventListener('click', () => {
+                searchModal.classList.remove('hidden');
+                if(desktopSearchInput) desktopSearchInput.focus();
+            });
+        }
+
+        if(searchCloseBtn) {
+            searchCloseBtn.addEventListener('click', () => {
+                searchModal.classList.add('hidden');
+            });
+        }
+
+        if(desktopSearchSubmitBtn) {
+            desktopSearchSubmitBtn.addEventListener('click', () => {
+                const query = desktopSearchInput.value.trim();
+                if(query) window.location.href = `shop.html?search=${encodeURIComponent(query)}`;
+            });
+        }
+
+        const mobileSearchSubmitBtn = document.getElementById('mobile-search-submit-btn');
+        const mobileSearchInput = document.getElementById('mobile-search-input');
+
+        if(mobileSearchSubmitBtn) {
+            mobileSearchSubmitBtn.addEventListener('click', () => {
+                const query = mobileSearchInput.value.trim();
+                if(query) window.location.href = `shop.html?search=${encodeURIComponent(query)}`;
+            });
+        }
+
         // Image Gallery Swapper
         function changeImage(src) {
             document.getElementById('main-image').src = src;
-            // Update border logic for thumbnails (simple version)
             document.querySelectorAll('.thumbnail').forEach(t => {
                 t.classList.remove('border-black');
                 t.classList.add('border-transparent');
@@ -212,7 +310,6 @@
             if(type === 'color') {
                 document.getElementById('color-name').innerText = value;
                 document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('ring-black', 'ring-gray-300', 'ring-rose-600'));
-                // Just add active styling back to clicked
                 if(value==='Pitch Black') btn.classList.add('ring-black');
                 else if(value==='Pure White') btn.classList.add('ring-gray-300');
                 else btn.classList.add('ring-rose-600');

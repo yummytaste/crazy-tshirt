@@ -17,6 +17,9 @@
         .toast-enter { transform: translateY(100%); opacity: 0; }
         .toast-show { transform: translateY(0); opacity: 1; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
         .toast-hide { transform: translateY(100%); opacity: 0; transition: all 0.3s ease-in; }
+
+        /* Mobile Menu Drawer Animation */
+        #mobile-menu { transition: transform 0.3s ease-in-out; }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-900 selection:bg-rose-500 selection:text-white pb-20 sm:pb-0">
@@ -41,8 +44,8 @@
     <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             
-            <!-- Mobile Menu Toggle -->
-            <button class="md:hidden text-2xl hover:text-rose-600 transition"><i class="fa-solid fa-bars"></i></button>
+            <!-- Mobile Menu Toggle Button -->
+            <button id="menu-toggle-btn" class="md:hidden text-2xl hover:text-rose-600 transition focus:outline-none"><i class="fa-solid fa-bars"></i></button>
             
             <!-- Brand Logo -->
             <a href="index.html" class="flex items-center gap-1 group">
@@ -55,7 +58,6 @@
                 <a href="index.html" class="text-rose-600 border-b-2 border-rose-600 pb-1">Home</a>
                 <a href="shop.html" class="hover:text-rose-600 transition relative group">
                     Shop All
-                    <!-- Mega Menu Dropdown Indicator -->
                     <i class="fa-solid fa-chevron-down text-[10px] ml-1"></i>
                 </a>
                 <a href="anime.html" class="hover:text-rose-600 transition flex items-center">
@@ -66,7 +68,8 @@
             
             <!-- Action Icons -->
             <div class="flex items-center space-x-5 text-xl">
-                <a href="shop.html" class="hover:text-rose-600 transition"><i class="fa-solid fa-magnifying-glass"></i></a>
+                <!-- Search Trigger Icon -->
+                <button id="search-trigger-btn" class="hover:text-rose-600 transition focus:outline-none"><i class="fa-solid fa-magnifying-glass"></i></button>
                 <a href="profile.html" class="hover:text-rose-600 transition hidden sm:block"><i class="fa-regular fa-user"></i></a>
                 <a href="wishlist.html" class="hover:text-rose-600 transition hidden sm:block relative">
                     <i class="fa-regular fa-heart"></i>
@@ -80,9 +83,42 @@
         </div>
     </header>
 
+    <!-- Mobile Slide-out Menu Drawer (Hidden by default) -->
+    <div id="mobile-menu" class="fixed inset-y-0 left-0 z-50 w-75 bg-black text-white transform -translate-x-full shadow-2xl flex flex-col justify-between p-6 md:hidden">
+        <div>
+            <div class="flex items-center justify-between pb-6 border-b border-gray-800">
+                <a href="index.html" class="text-2xl font-black tracking-tighter uppercase">CRAZY<span class="text-rose-600">.</span></a>
+                <button id="menu-close-btn" class="text-2xl text-gray-400 hover:text-white focus:outline-none"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <nav class="flex flex-col space-y-5 mt-8 font-bold uppercase tracking-wider text-sm">
+                <a href="index.html" class="text-rose-500 transition">Home</a>
+                <a href="shop.html" class="hover:text-rose-500 transition">Shop All</a>
+                <a href="anime.html" class="hover:text-rose-500 transition flex items-center justify-between">Anime Edit <span class="bg-rose-600 text-white text-[8px] px-1.5 py-0.5 rounded">HOT</span></a>
+                <a href="about.html" class="hover:text-rose-500 transition">Our Story</a>
+                <a href="profile.html" class="hover:text-rose-500 transition">My Account</a>
+                <a href="wishlist.html" class="hover:text-rose-500 transition">Wishlist</a>
+                <a href="contact.html" class="hover:text-rose-500 transition">Support & Contact</a>
+            </nav>
+        </div>
+        <div class="border-t border-gray-800 pt-4 text-xs text-gray-500 font-medium text-center">
+            © 2026 Crazy T-Shirt. All Rights Reserved.
+        </div>
+    </div>
+
+    <!-- Search Modal Overlay -->
+    <div id="search-modal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex items-start justify-center pt-24 px-4">
+        <div class="bg-white w-full max-w-xl rounded-2xl p-6 shadow-2xl relative">
+            <button id="search-close-btn" class="absolute top-4 right-4 text-xl text-gray-500 hover:text-black"><i class="fa-solid fa-xmark"></i></button>
+            <h3 class="font-black text-lg uppercase tracking-wider mb-4">Search Products</h3>
+            <div class="flex">
+                <input type="text" id="search-input" placeholder="Search oversized tees, anime editions..." class="w-full bg-gray-100 border border-gray-300 px-4 py-3 rounded-l-xl focus:outline-none font-medium">
+                <button id="search-submit-btn" class="bg-black text-white px-6 rounded-r-xl font-black uppercase hover:bg-rose-600 transition"><i class="fa-solid fa-magnifying-glass"></i></button>
+            </div>
+        </div>
+    </div>
+
     <!-- Mega Hero Section -->
     <section class="relative bg-gray-100 py-16 lg:py-28 overflow-hidden">
-        <!-- Abstract Background -->
         <div class="absolute inset-0 z-0">
             <div class="absolute top-0 right-0 -mt-20 -mr-20 w-[500px] h-[500px] bg-rose-200 rounded-full blur-[100px] opacity-60"></div>
             <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-[400px] h-[400px] bg-blue-100 rounded-full blur-[100px] opacity-60"></div>
@@ -113,7 +149,6 @@
                     </a>
                 </div>
                 
-                <!-- Trust mini-indicators -->
                 <div class="flex items-center justify-center lg:justify-start space-x-6 pt-6 opacity-70">
                     <div class="flex items-center space-x-2 text-sm font-bold"><i class="fa-solid fa-star text-yellow-400"></i> <span>10k+ Happy Customers</span></div>
                     <div class="flex items-center space-x-2 text-sm font-bold"><i class="fa-solid fa-shirt text-black"></i> <span>Premium Quality</span></div>
@@ -123,7 +158,6 @@
             <div class="lg:col-span-6 relative">
                 <div class="relative bg-white p-2 rounded-[2rem] shadow-2xl transform rotate-2 hover:rotate-0 transition duration-500">
                     <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=800&q=80" alt="Hero Model" class="rounded-[1.5rem] w-full h-[500px] lg:h-[600px] object-cover">
-                    <!-- Floating Badge -->
                     <div class="absolute -left-6 bottom-12 bg-white p-4 rounded-2xl shadow-xl flex items-center space-x-3 animate-bounce">
                         <div class="w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center text-rose-600 text-xl"><i class="fa-solid fa-fire"></i></div>
                         <div>
@@ -150,7 +184,7 @@
         </div>
     </div>
 
-    <!-- Shop By Category (4 Cards) -->
+    <!-- Shop By Category -->
     <section class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center mb-16">
             <h2 class="text-4xl sm:text-5xl font-black tracking-tight uppercase">Shop By Category</h2>
@@ -158,7 +192,6 @@
         </div>
         
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- Category 1 -->
             <a href="shop.html" class="group relative h-96 rounded-3xl overflow-hidden shadow-lg block">
                 <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
@@ -167,7 +200,6 @@
                     <span class="bg-white text-black text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest group-hover:bg-rose-600 group-hover:text-white transition">Explore</span>
                 </div>
             </a>
-            <!-- Category 2 -->
             <a href="anime.html" class="group relative h-96 rounded-3xl overflow-hidden shadow-lg block">
                 <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
@@ -176,7 +208,6 @@
                     <span class="bg-white text-black text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest group-hover:bg-rose-600 group-hover:text-white transition">Explore</span>
                 </div>
             </a>
-            <!-- Category 3 -->
             <a href="shop.html" class="group relative h-96 rounded-3xl overflow-hidden shadow-lg block">
                 <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
@@ -185,7 +216,6 @@
                     <span class="bg-white text-black text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest group-hover:bg-rose-600 group-hover:text-white transition">Explore</span>
                 </div>
             </a>
-            <!-- Category 4 -->
             <a href="shop.html" class="group relative h-96 rounded-3xl overflow-hidden shadow-lg block">
                 <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
                 <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
@@ -209,13 +239,11 @@
             </div>
 
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
-                <!-- Product Card (Dark Mode) -->
                 <div class="group cursor-pointer">
                     <div class="relative bg-gray-900 rounded-xl sm:rounded-2xl overflow-hidden aspect-[4/5] border border-gray-800">
                         <span class="absolute top-3 left-3 bg-rose-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase z-10 shadow-md">New</span>
                         <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&w=600&q=80" onclick="window.location.href='product.html'" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100">
                         
-                        <!-- Interactive Icons -->
                         <div class="absolute top-3 right-3 flex flex-col gap-2 z-10 sm:translate-x-10 sm:opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300">
                             <button onclick="addToWishlist('Gojo Satoru Anime Edit')" class="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center hover:bg-rose-600 hover:text-white transition shadow-lg"><i class="fa-regular fa-heart"></i></button>
                         </div>
@@ -227,7 +255,6 @@
                     </div>
                 </div>
 
-                <!-- Card 2 -->
                 <div class="group cursor-pointer">
                     <div class="relative bg-gray-900 rounded-xl sm:rounded-2xl overflow-hidden aspect-[4/5] border border-gray-800">
                         <span class="absolute top-3 left-3 bg-rose-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase z-10 shadow-md">New</span>
@@ -244,7 +271,6 @@
                     </div>
                 </div>
 
-                <!-- Card 3 -->
                 <div class="group cursor-pointer hidden md:block">
                     <div class="relative bg-gray-900 rounded-xl sm:rounded-2xl overflow-hidden aspect-[4/5] border border-gray-800">
                         <span class="absolute top-3 left-3 bg-rose-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase z-10 shadow-md">New</span>
@@ -261,7 +287,6 @@
                     </div>
                 </div>
 
-                <!-- Card 4 -->
                 <div class="group cursor-pointer hidden lg:block">
                     <div class="relative bg-gray-900 rounded-xl sm:rounded-2xl overflow-hidden aspect-[4/5] border border-gray-800">
                         <span class="absolute top-3 left-3 bg-rose-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase z-10 shadow-md">New</span>
@@ -298,7 +323,7 @@
         </div>
     </section>
 
-    <!-- TRENDING DROPS (8 Products Grid) -->
+    <!-- TRENDING DROPS -->
     <section class="py-20 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -306,11 +331,7 @@
                 <div class="w-24 h-1.5 bg-black mx-auto mt-6 rounded-full"></div>
             </div>
 
-            <!-- Grid: 2 cols on mobile, 4 on desktop -->
             <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
-                
-                <!-- Generating 8 Products for full look -->
-                <!-- Product 1 -->
                 <div class="group cursor-pointer bg-white p-3 sm:p-4 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-gray-100">
                     <div class="relative bg-gray-100 rounded-xl overflow-hidden aspect-[4/5]">
                         <span class="absolute top-3 left-3 bg-black text-white text-[10px] font-bold px-2 py-1 rounded-md uppercase z-10">Bestseller</span>
@@ -324,7 +345,6 @@
                     </div>
                 </div>
 
-                <!-- Product 2 -->
                 <div class="group cursor-pointer bg-white p-3 sm:p-4 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-gray-100">
                     <div class="relative bg-gray-100 rounded-xl overflow-hidden aspect-[4/5]">
                         <span class="absolute top-3 left-3 bg-rose-600 text-white text-[10px] font-bold px-2 py-1 rounded-md uppercase z-10">Sale</span>
@@ -338,7 +358,6 @@
                     </div>
                 </div>
 
-                <!-- Product 3 -->
                 <div class="group cursor-pointer bg-white p-3 sm:p-4 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-gray-100">
                     <div class="relative bg-gray-100 rounded-xl overflow-hidden aspect-[4/5]">
                         <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=600&q=80" onclick="window.location.href='product.html'" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
@@ -351,7 +370,6 @@
                     </div>
                 </div>
 
-                <!-- Product 4 -->
                 <div class="group cursor-pointer bg-white p-3 sm:p-4 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-gray-100">
                     <div class="relative bg-gray-100 rounded-xl overflow-hidden aspect-[4/5]">
                         <span class="absolute top-3 left-3 bg-blue-600 text-white text-[10px] font-bold px-2 py-1 rounded-md uppercase z-10">Restocked</span>
@@ -402,17 +420,16 @@
         </div>
     </section>
 
-    <!-- Footer with Logo & Comprehensive Links -->
+    <!-- Footer -->
     <footer class="bg-black text-white pt-20 pb-12 border-t-4 border-rose-600">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16 border-b border-gray-800 pb-16">
             <div class="space-y-6">
-                <!-- Footer Logo -->
                 <a href="index.html" class="flex items-center gap-1 group">
                     <svg class="w-8 h-8 text-rose-600" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
                     <span class="text-3xl font-black tracking-tighter uppercase">CRAZY<span class="text-rose-600">.</span></span>
                 </a>
                 <p class="text-gray-400 text-sm font-medium leading-relaxed">
-                    Redefining streetwear for the next generation. Designed in West Bengal, India.
+                    Redefining streetwear for the next generation. Designed in West Bengal, India[cite: 13].
                 </p>
                 <div class="flex space-x-4">
                     <a href="#" class="w-10 h-10 bg-gray-900 rounded-full flex items-center justify-center hover:bg-rose-600 hover:-translate-y-1 transition-all"><i class="fa-brands fa-instagram"></i></a>
@@ -452,7 +469,7 @@
         </div>
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center text-center sm:text-left gap-4">
-            <p class="text-gray-500 text-xs font-bold uppercase tracking-widest">© 2026 Crazy T-Shirt. All Rights Reserved.</p>
+            <p class="text-gray-500 text-xs font-bold uppercase tracking-widest">© 2026 Crazy T-Shirt. All Rights Reserved[cite: 13].</p>
             <div class="flex space-x-4 text-2xl text-gray-600">
                 <i class="fa-brands fa-cc-visa"></i>
                 <i class="fa-brands fa-cc-mastercard"></i>
@@ -462,7 +479,7 @@
         </div>
     </footer>
 
-    <!-- Mobile Bottom Navigation Bar (Sticky for Phones) -->
+    <!-- Mobile Bottom Navigation Bar -->
     <div class="md:hidden fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 z-50 px-6 py-3 flex justify-between items-center shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
         <a href="index.html" class="flex flex-col items-center text-rose-600"><i class="fa-solid fa-house text-xl"></i><span class="text-[9px] font-bold mt-1 uppercase">Home</span></a>
         <a href="shop.html" class="flex flex-col items-center text-gray-400 hover:text-black"><i class="fa-solid fa-border-all text-xl"></i><span class="text-[9px] font-bold mt-1 uppercase">Shop</span></a>
@@ -482,9 +499,44 @@
 
     <!-- Interactive JavaScript -->
     <script>
-        // Update Cart & Wishlist counts
         let cartCount = 2;
         let wishlistCount = 0;
+
+        // Mobile Menu Toggle Script
+        const menuToggleBtn = document.getElementById('menu-toggle-btn');
+        const menuCloseBtn = document.getElementById('menu-close-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuToggleBtn.addEventListener('click', () => {
+            mobileMenu.classList.remove('-translate-x-full');
+        });
+
+        menuCloseBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('-translate-x-full');
+        });
+
+        // Search Modal Toggle Script
+        const searchTriggerBtn = document.getElementById('search-trigger-btn');
+        const searchCloseBtn = document.getElementById('search-close-btn');
+        const searchModal = document.getElementById('search-modal');
+        const searchSubmitBtn = document.getElementById('search-submit-btn');
+        const searchInput = document.getElementById('search-input');
+
+        searchTriggerBtn.addEventListener('click', () => {
+            searchModal.classList.remove('hidden');
+            searchInput.focus();
+        });
+
+        searchCloseBtn.addEventListener('click', () => {
+            searchModal.classList.add('hidden');
+        });
+
+        searchSubmitBtn.addEventListener('click', () => {
+            const query = searchInput.value.trim();
+            if(query) {
+                window.location.href = `shop.html?search=${encodeURIComponent(query)}`;
+            }
+        });
 
         // Toast Notification System
         function showToast(title, message, iconClass) {
@@ -503,14 +555,13 @@
                     toast.classList.remove('toast-hide');
                     toast.classList.add('toast-enter');
                 }, 300);
-            }, 3000); // Hide after 3 seconds
+            }, 3000);
         }
 
         // Add to Cart Function
         function addToCart(productName, price) {
             cartCount++;
             document.getElementById('nav-cart-count').innerText = cartCount;
-            // Update mobile cart count if exists
             const mobileCart = document.querySelector('.md\\:hidden .fa-bag-shopping').nextElementSibling;
             if(mobileCart) mobileCart.innerText = cartCount;
             
