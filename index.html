@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crazy T-Shirt | The Ultimate Streetwear Brand</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Outfit', sans-serif; overflow-x: hidden; }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .animate-scroll { display: inline-block; white-space: nowrap; animation: scroll 20s linear infinite; }
+        
+        /* Toast Notification Animation */
+        .toast-enter { transform: translateY(100%); opacity: 0; }
+        .toast-show { transform: translateY(0); opacity: 1; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .toast-hide { transform: translateY(100%); opacity: 0; transition: all 0.3s ease-in; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 selection:bg-rose-500 selection:text-white pb-20 sm:pb-0">
+
+    <!-- Top Announcement Bar (Advanced) -->
+    <div class="bg-black text-white text-[10px] sm:text-xs py-2 px-4 flex justify-between items-center font-bold tracking-widest uppercase z-50 relative">
+        <div class="hidden lg:flex items-center space-x-4">
+            <span class="cursor-pointer hover:text-rose-500 transition">IND (₹)</span>
+            <span>|</span>
+            <span class="cursor-pointer hover:text-rose-500 transition">ENG</span>
+        </div>
+        <div class="mx-auto text-center">
+            🔥 MEGA SALE: GET FLAT 20% OFF | USE CODE: <span class="text-rose-500">CRAZY20</span>
+        </div>
+        <div class="hidden lg:flex items-center space-x-4">
+            <a href="contact.html" class="hover:text-rose-500 transition"><i class="fa-solid fa-headset mr-1"></i> Support</a>
+            <a href="#" class="hover:text-rose-500 transition"><i class="fa-solid fa-truck-fast mr-1"></i> Track Order</a>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Mobile Menu Toggle -->
+            <button class="md:hidden text-2xl hover:text-rose-600 transition"><i class="fa-solid fa-bars"></i></button>
+            
+            <!-- Brand Logo -->
+            <a href="index.html" class="flex items-center gap-1 group">
+                <svg class="w-8 h-8 text-rose-600 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                <span class="text-3xl font-black tracking-tighter uppercase">CRAZY<span class="text-rose-600">.</span></span>
+            </a>
+
+            <!-- Desktop Links -->
+            <nav class="hidden md:flex items-center space-x-8 font-bold text-sm tracking-wide uppercase">
+                <a href="index.html" class="text-rose-600 border-b-2 border-rose-600 pb-1">Home</a>
+                <a href="shop.html" class="hover:text-rose-600 transition relative group">
+                    Shop All
+                    <!-- Mega Menu Dropdown Indicator -->
+                    <i class="fa-solid fa-chevron-down text-[10px] ml-1"></i>
+                </a>
+                <a href="anime.html" class="hover:text-rose-600 transition flex items-center">
+                    Anime Edit <span class="bg-rose-600 text-white text-[8px] px-1.5 py-0.5 rounded ml-1 animate-pulse">HOT</span>
+                </a>
+                <a href="about.html" class="hover:text-rose-600 transition">Our Story</a>
+            </nav>
+            
+            <!-- Action Icons -->
+            <div class="flex items-center space-x-5 text-xl">
+                <a href="shop.html" class="hover:text-rose-600 transition"><i class="fa-solid fa-magnifying-glass"></i></a>
+                <a href="profile.html" class="hover:text-rose-600 transition hidden sm:block"><i class="fa-regular fa-user"></i></a>
+                <a href="wishlist.html" class="hover:text-rose-600 transition hidden sm:block relative">
+                    <i class="fa-regular fa-heart"></i>
+                    <span id="nav-wishlist-count" class="absolute -top-1.5 -right-2 bg-black text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold shadow-sm">0</span>
+                </a>
+                <a href="cart.html" class="hover:text-rose-600 transition relative group">
+                    <i class="fa-bag-shopping fa-solid group-hover:animate-bounce"></i>
+                    <span id="nav-cart-count" class="absolute -top-1.5 -right-2 bg-rose-600 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold shadow-sm">2</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mega Hero Section -->
+    <section class="relative bg-gray-100 py-16 lg:py-28 overflow-hidden">
+        <!-- Abstract Background -->
+        <div class="absolute inset-0 z-0">
+            <div class="absolute top-0 right-0 -mt-20 -mr-20 w-[500px] h-[500px] bg-rose-200 rounded-full blur-[100px] opacity-60"></div>
+            <div class="absolute bottom-0 left-0 -mb-20 -ml-20 w-[400px] h-[400px] bg-blue-100 rounded-full blur-[100px] opacity-60"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+            
+            <div class="lg:col-span-6 space-y-8 text-center lg:text-left">
+                <div class="inline-flex items-center space-x-2 bg-white px-4 py-2 rounded-full shadow-sm border border-gray-200">
+                    <span class="relative flex h-3 w-3">
+                      <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
+                      <span class="relative inline-flex rounded-full h-3 w-3 bg-rose-600"></span>
+                    </span>
+                    <span class="text-xs font-bold uppercase tracking-widest text-gray-800">Season 04 Drop is Live</span>
+                </div>
+                
+                <h1 class="text-5xl sm:text-7xl lg:text-8xl font-black tracking-tighter leading-[0.95] text-black">
+                    UNLEASH YOUR <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-600 to-black">CRAZY.</span>
+                </h1>
+                
+                <p class="text-gray-600 text-lg sm:text-xl font-medium max-w-lg mx-auto lg:mx-0 leading-relaxed">
+                    Elevate your everyday wardrobe with our ultra-premium, 240 GSM heavy cotton oversized tees. Designed for the bold.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 pt-4">
+                    <a href="shop.html" class="bg-black text-white px-10 py-4 font-black text-sm rounded-full hover:bg-rose-600 transition-all shadow-2xl hover:shadow-rose-600/40 uppercase tracking-widest flex items-center justify-center">
+                        Shop Collection <i class="fa-solid fa-arrow-right ml-3"></i>
+                    </a>
+                </div>
+                
+                <!-- Trust mini-indicators -->
+                <div class="flex items-center justify-center lg:justify-start space-x-6 pt-6 opacity-70">
+                    <div class="flex items-center space-x-2 text-sm font-bold"><i class="fa-solid fa-star text-yellow-400"></i> <span>10k+ Happy Customers</span></div>
+                    <div class="flex items-center space-x-2 text-sm font-bold"><i class="fa-solid fa-shirt text-black"></i> <span>Premium Quality</span></div>
+                </div>
+            </div>
+
+            <div class="lg:col-span-6 relative">
+                <div class="relative bg-white p-2 rounded-[2rem] shadow-2xl transform rotate-2 hover:rotate-0 transition duration-500">
+                    <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=800&q=80" alt="Hero Model" class="rounded-[1.5rem] w-full h-[500px] lg:h-[600px] object-cover">
+                    <!-- Floating Badge -->
+                    <div class="absolute -left-6 bottom-12 bg-white p-4 rounded-2xl shadow-xl flex items-center space-x-3 animate-bounce">
+                        <div class="w-12 h-12 bg-rose-100 rounded-full flex items-center justify-center text-rose-600 text-xl"><i class="fa-solid fa-fire"></i></div>
+                        <div>
+                            <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest">Trending Now</p>
+                            <p class="font-black text-sm">Classic Black Tee</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scrolling Marquee -->
+    <div class="bg-black text-white py-4 overflow-hidden border-y-4 border-rose-600 relative z-20">
+        <div class="animate-scroll whitespace-nowrap flex items-center">
+            <span class="text-xl sm:text-2xl font-black uppercase tracking-widest mx-8 text-rose-500">★ 100% Super Combed Cotton</span>
+            <span class="text-xl sm:text-2xl font-black uppercase tracking-widest mx-8">★ Bio-Washed</span>
+            <span class="text-xl sm:text-2xl font-black uppercase tracking-widest mx-8 text-rose-500">★ High-Density Print</span>
+            <span class="text-xl sm:text-2xl font-black uppercase tracking-widest mx-8">★ Heavy 240 GSM</span>
+            <span class="text-xl sm:text-2xl font-black uppercase tracking-widest mx-8 text-rose-500">★ 100% Super Combed Cotton</span>
+            <span class="text-xl sm:text-2xl font-black uppercase tracking-widest mx-8">★ Bio-Washed</span>
+            <span class="text-xl sm:text-2xl font-black uppercase tracking-widest mx-8 text-rose-500">★ High-Density Print</span>
+            <span class="text-xl sm:text-2xl font-black uppercase tracking-widest mx-8">★ Heavy 240 GSM</span>
+        </div>
+    </div>
+
+    <!-- Shop By Category (4 Cards) -->
+    <section class="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl sm:text-5xl font-black tracking-tight uppercase">Shop By Category</h2>
+            <div class="w-24 h-1.5 bg-rose-600 mx-auto mt-6 rounded-full"></div>
+        </div>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Category 1 -->
+            <a href="shop.html" class="group relative h-96 rounded-3xl overflow-hidden shadow-lg block">
+                <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                <div class="absolute bottom-6 left-6 right-6 text-center">
+                    <h3 class="text-white text-3xl font-black uppercase tracking-wider mb-2">Oversized</h3>
+                    <span class="bg-white text-black text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest group-hover:bg-rose-600 group-hover:text-white transition">Explore</span>
+                </div>
+            </a>
+            <!-- Category 2 -->
+            <a href="anime.html" class="group relative h-96 rounded-3xl overflow-hidden shadow-lg block">
+                <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                <div class="absolute bottom-6 left-6 right-6 text-center">
+                    <h3 class="text-white text-3xl font-black uppercase tracking-wider mb-2">Anime</h3>
+                    <span class="bg-white text-black text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest group-hover:bg-rose-600 group-hover:text-white transition">Explore</span>
+                </div>
+            </a>
+            <!-- Category 3 -->
+            <a href="shop.html" class="group relative h-96 rounded-3xl overflow-hidden shadow-lg block">
+                <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                <div class="absolute bottom-6 left-6 right-6 text-center">
+                    <h3 class="text-white text-3xl font-black uppercase tracking-wider mb-2">Graphic</h3>
+                    <span class="bg-white text-black text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest group-hover:bg-rose-600 group-hover:text-white transition">Explore</span>
+                </div>
+            </a>
+            <!-- Category 4 -->
+            <a href="shop.html" class="group relative h-96 rounded-3xl overflow-hidden shadow-lg block">
+                <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                <div class="absolute bottom-6 left-6 right-6 text-center">
+                    <h3 class="text-white text-3xl font-black uppercase tracking-wider mb-2">Solids</h3>
+                    <span class="bg-white text-black text-xs font-bold px-4 py-2 rounded-full uppercase tracking-widest group-hover:bg-rose-600 group-hover:text-white transition">Explore</span>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- NEW ARRIVALS SECTION -->
+    <section class="py-20 bg-black text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col sm:flex-row sm:justify-between sm:items-end mb-12">
+                <div>
+                    <span class="text-rose-500 font-bold tracking-widest uppercase text-xs">Fresh Out The Oven</span>
+                    <h2 class="text-3xl sm:text-5xl font-black tracking-tight uppercase mt-2">New Arrivals</h2>
+                </div>
+                <a href="shop.html" class="text-sm font-bold border-b-2 border-white pb-1 hover:text-rose-500 hover:border-rose-500 transition uppercase tracking-wider mt-4 sm:mt-0 inline-block">See All New</a>
+            </div>
+
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
+                <!-- Product Card (Dark Mode) -->
+                <div class="group cursor-pointer">
+                    <div class="relative bg-gray-900 rounded-xl sm:rounded-2xl overflow-hidden aspect-[4/5] border border-gray-800">
+                        <span class="absolute top-3 left-3 bg-rose-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase z-10 shadow-md">New</span>
+                        <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&w=600&q=80" onclick="window.location.href='product.html'" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100">
+                        
+                        <!-- Interactive Icons -->
+                        <div class="absolute top-3 right-3 flex flex-col gap-2 z-10 sm:translate-x-10 sm:opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300">
+                            <button onclick="addToWishlist('Gojo Satoru Anime Edit')" class="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center hover:bg-rose-600 hover:text-white transition shadow-lg"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                        <button onclick="addToCart('Gojo Satoru Anime Edit', 899)" class="absolute bottom-0 left-0 w-full bg-white text-black py-4 font-black text-sm uppercase tracking-widest translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-10 hover:bg-rose-600 hover:text-white">Add To Cart</button>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3 class="font-bold text-base sm:text-lg text-white group-hover:text-rose-500 transition truncate">Gojo Satoru Anime Edit</h3>
+                        <p class="font-black text-lg sm:text-xl text-gray-300 mt-1">₹899</p>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="group cursor-pointer">
+                    <div class="relative bg-gray-900 rounded-xl sm:rounded-2xl overflow-hidden aspect-[4/5] border border-gray-800">
+                        <span class="absolute top-3 left-3 bg-rose-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase z-10 shadow-md">New</span>
+                        <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=600&q=80" onclick="window.location.href='product.html'" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100">
+                        
+                        <div class="absolute top-3 right-3 flex flex-col gap-2 z-10 sm:translate-x-10 sm:opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300">
+                            <button onclick="addToWishlist('Cyberpunk Acid Wash')" class="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center hover:bg-rose-600 hover:text-white transition shadow-lg"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                        <button onclick="addToCart('Cyberpunk Acid Wash', 999)" class="absolute bottom-0 left-0 w-full bg-white text-black py-4 font-black text-sm uppercase tracking-widest translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-10 hover:bg-rose-600 hover:text-white">Add To Cart</button>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3 class="font-bold text-base sm:text-lg text-white group-hover:text-rose-500 transition truncate">Cyberpunk Acid Wash</h3>
+                        <p class="font-black text-lg sm:text-xl text-gray-300 mt-1">₹999</p>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="group cursor-pointer hidden md:block">
+                    <div class="relative bg-gray-900 rounded-xl sm:rounded-2xl overflow-hidden aspect-[4/5] border border-gray-800">
+                        <span class="absolute top-3 left-3 bg-rose-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase z-10 shadow-md">New</span>
+                        <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=600&q=80" onclick="window.location.href='product.html'" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100">
+                        
+                        <div class="absolute top-3 right-3 flex flex-col gap-2 z-10 sm:translate-x-10 sm:opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300">
+                            <button onclick="addToWishlist('Y2K Retro Graphic')" class="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center hover:bg-rose-600 hover:text-white transition shadow-lg"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                        <button onclick="addToCart('Y2K Retro Graphic', 749)" class="absolute bottom-0 left-0 w-full bg-white text-black py-4 font-black text-sm uppercase tracking-widest translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-10 hover:bg-rose-600 hover:text-white">Add To Cart</button>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3 class="font-bold text-base sm:text-lg text-white group-hover:text-rose-500 transition truncate">Y2K Retro Graphic</h3>
+                        <p class="font-black text-lg sm:text-xl text-gray-300 mt-1">₹749</p>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="group cursor-pointer hidden lg:block">
+                    <div class="relative bg-gray-900 rounded-xl sm:rounded-2xl overflow-hidden aspect-[4/5] border border-gray-800">
+                        <span class="absolute top-3 left-3 bg-rose-600 text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase z-10 shadow-md">New</span>
+                        <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80" onclick="window.location.href='product.html'" class="w-full h-full object-cover group-hover:scale-105 transition duration-700 opacity-90 group-hover:opacity-100">
+                        
+                        <div class="absolute top-3 right-3 flex flex-col gap-2 z-10 sm:translate-x-10 sm:opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300">
+                            <button onclick="addToWishlist('Midnight Black Solid')" class="w-10 h-10 bg-white text-black rounded-full flex items-center justify-center hover:bg-rose-600 hover:text-white transition shadow-lg"><i class="fa-regular fa-heart"></i></button>
+                        </div>
+                        <button onclick="addToCart('Midnight Black Solid', 699)" class="absolute bottom-0 left-0 w-full bg-white text-black py-4 font-black text-sm uppercase tracking-widest translate-y-full group-hover:translate-y-0 transition-transform duration-300 z-10 hover:bg-rose-600 hover:text-white">Add To Cart</button>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3 class="font-bold text-base sm:text-lg text-white group-hover:text-rose-500 transition truncate">Midnight Black Solid</h3>
+                        <p class="font-black text-lg sm:text-xl text-gray-300 mt-1">₹699</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mid-Page Promotional Banner -->
+    <section class="py-12 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="relative rounded-3xl overflow-hidden bg-rose-600 flex flex-col lg:flex-row items-center shadow-2xl">
+                <div class="lg:w-1/2 p-10 lg:p-16 text-center lg:text-left text-white z-10">
+                    <span class="bg-black text-white text-xs font-black px-4 py-2 rounded-full uppercase tracking-widest shadow-md">Limited Edition</span>
+                    <h2 class="text-4xl sm:text-6xl font-black tracking-tighter uppercase mt-6 mb-4">THE TOKYO <br> DRIFT PACK</h2>
+                    <p class="text-rose-100 font-medium text-lg mb-8 max-w-md mx-auto lg:mx-0">Get 3 premium anime oversized tees at an unbelievable combo price. Valid till stock lasts.</p>
+                    <a href="shop.html" class="inline-block bg-white text-rose-600 px-8 py-4 rounded-full font-black text-sm uppercase tracking-widest hover:bg-black hover:text-white transition shadow-xl">Grab The Pack - ₹2,499</a>
+                </div>
+                <div class="lg:w-1/2 relative h-64 lg:h-full w-full">
+                    <img src="https://images.unsplash.com/photo-1560942485-b2a11cc13456?auto=format&fit=crop&w=800&q=80" class="absolute inset-0 w-full h-full object-cover mix-blend-overlay opacity-80">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TRENDING DROPS (8 Products Grid) -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl sm:text-5xl font-black tracking-tight uppercase">Trending Drops</h2>
+                <div class="w-24 h-1.5 bg-black mx-auto mt-6 rounded-full"></div>
+            </div>
+
+            <!-- Grid: 2 cols on mobile, 4 on desktop -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
+                
+                <!-- Generating 8 Products for full look -->
+                <!-- Product 1 -->
+                <div class="group cursor-pointer bg-white p-3 sm:p-4 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-gray-100">
+                    <div class="relative bg-gray-100 rounded-xl overflow-hidden aspect-[4/5]">
+                        <span class="absolute top-3 left-3 bg-black text-white text-[10px] font-bold px-2 py-1 rounded-md uppercase z-10">Bestseller</span>
+                        <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80" onclick="window.location.href='product.html'" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <button onclick="addToWishlist('Essential Black Tee')" class="absolute top-3 right-3 w-8 h-8 sm:w-10 sm:h-10 bg-white text-black rounded-full flex items-center justify-center hover:bg-rose-600 hover:text-white transition shadow-md z-10"><i class="fa-regular fa-heart"></i></button>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3 class="font-bold text-sm sm:text-base text-gray-900 group-hover:text-rose-600 transition truncate">Essential Black Tee</h3>
+                        <p class="font-black text-base sm:text-lg mt-1 text-black">₹799</p>
+                        <button onclick="addToCart('Essential Black Tee', 799)" class="w-full mt-3 bg-gray-100 text-black py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider hover:bg-black hover:text-white transition">Quick Add</button>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="group cursor-pointer bg-white p-3 sm:p-4 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-gray-100">
+                    <div class="relative bg-gray-100 rounded-xl overflow-hidden aspect-[4/5]">
+                        <span class="absolute top-3 left-3 bg-rose-600 text-white text-[10px] font-bold px-2 py-1 rounded-md uppercase z-10">Sale</span>
+                        <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=600&q=80" onclick="window.location.href='product.html'" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <button onclick="addToWishlist('Smile Graphic Tee')" class="absolute top-3 right-3 w-8 h-8 sm:w-10 sm:h-10 bg-white text-black rounded-full flex items-center justify-center hover:bg-rose-600 hover:text-white transition shadow-md z-10"><i class="fa-regular fa-heart"></i></button>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3 class="font-bold text-sm sm:text-base text-gray-900 group-hover:text-rose-600 transition truncate">Smile Graphic Tee</h3>
+                        <p class="font-black text-base sm:text-lg mt-1 text-rose-600">₹649 <span class="text-xs text-gray-400 line-through">₹999</span></p>
+                        <button onclick="addToCart('Smile Graphic Tee', 649)" class="w-full mt-3 bg-gray-100 text-black py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider hover:bg-black hover:text-white transition">Quick Add</button>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="group cursor-pointer bg-white p-3 sm:p-4 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-gray-100">
+                    <div class="relative bg-gray-100 rounded-xl overflow-hidden aspect-[4/5]">
+                        <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=600&q=80" onclick="window.location.href='product.html'" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <button onclick="addToWishlist('Minimalist White')" class="absolute top-3 right-3 w-8 h-8 sm:w-10 sm:h-10 bg-white text-black rounded-full flex items-center justify-center hover:bg-rose-600 hover:text-white transition shadow-md z-10"><i class="fa-regular fa-heart"></i></button>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3 class="font-bold text-sm sm:text-base text-gray-900 group-hover:text-rose-600 transition truncate">Minimalist White</h3>
+                        <p class="font-black text-base sm:text-lg mt-1 text-black">₹599</p>
+                        <button onclick="addToCart('Minimalist White', 599)" class="w-full mt-3 bg-gray-100 text-black py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider hover:bg-black hover:text-white transition">Quick Add</button>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="group cursor-pointer bg-white p-3 sm:p-4 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-gray-100">
+                    <div class="relative bg-gray-100 rounded-xl overflow-hidden aspect-[4/5]">
+                        <span class="absolute top-3 left-3 bg-blue-600 text-white text-[10px] font-bold px-2 py-1 rounded-md uppercase z-10">Restocked</span>
+                        <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&w=600&q=80" onclick="window.location.href='product.html'" class="w-full h-full object-cover group-hover:scale-110 transition duration-700">
+                        <button onclick="addToWishlist('Anime Street Tee')" class="absolute top-3 right-3 w-8 h-8 sm:w-10 sm:h-10 bg-white text-black rounded-full flex items-center justify-center hover:bg-rose-600 hover:text-white transition shadow-md z-10"><i class="fa-regular fa-heart"></i></button>
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3 class="font-bold text-sm sm:text-base text-gray-900 group-hover:text-rose-600 transition truncate">Anime Street Tee</h3>
+                        <p class="font-black text-base sm:text-lg mt-1 text-black">₹899</p>
+                        <button onclick="addToCart('Anime Street Tee', 899)" class="w-full mt-3 bg-gray-100 text-black py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider hover:bg-black hover:text-white transition">Quick Add</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <a href="shop.html" class="inline-flex items-center bg-black text-white px-10 py-4 rounded-full font-black text-sm uppercase tracking-widest hover:bg-rose-600 transition shadow-xl">
+                    View Entire Collection <i class="fa-solid fa-arrow-right ml-3"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Badges Section -->
+    <section class="py-16 bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                <div>
+                    <div class="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mx-auto text-2xl text-black mb-4 border border-gray-200"><i class="fa-solid fa-truck-fast"></i></div>
+                    <h4 class="font-black text-sm uppercase tracking-wider">Free Shipping</h4>
+                    <p class="text-xs text-gray-500 font-medium mt-1">On orders over ₹999</p>
+                </div>
+                <div>
+                    <div class="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mx-auto text-2xl text-black mb-4 border border-gray-200"><i class="fa-solid fa-shirt"></i></div>
+                    <h4 class="font-black text-sm uppercase tracking-wider">Premium Quality</h4>
+                    <p class="text-xs text-gray-500 font-medium mt-1">240 GSM Heavy Cotton</p>
+                </div>
+                <div>
+                    <div class="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mx-auto text-2xl text-black mb-4 border border-gray-200"><i class="fa-solid fa-arrow-rotate-left"></i></div>
+                    <h4 class="font-black text-sm uppercase tracking-wider">7 Days Return</h4>
+                    <p class="text-xs text-gray-500 font-medium mt-1">No questions asked</p>
+                </div>
+                <div>
+                    <div class="w-16 h-16 bg-gray-50 rounded-full flex items-center justify-center mx-auto text-2xl text-black mb-4 border border-gray-200"><i class="fa-solid fa-shield-halved"></i></div>
+                    <h4 class="font-black text-sm uppercase tracking-wider">Secure Payment</h4>
+                    <p class="text-xs text-gray-500 font-medium mt-1">100% safe checkout</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer with Logo & Comprehensive Links -->
+    <footer class="bg-black text-white pt-20 pb-12 border-t-4 border-rose-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16 border-b border-gray-800 pb-16">
+            <div class="space-y-6">
+                <!-- Footer Logo -->
+                <a href="index.html" class="flex items-center gap-1 group">
+                    <svg class="w-8 h-8 text-rose-600" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    <span class="text-3xl font-black tracking-tighter uppercase">CRAZY<span class="text-rose-600">.</span></span>
+                </a>
+                <p class="text-gray-400 text-sm font-medium leading-relaxed">
+                    Redefining streetwear for the next generation. Designed in West Bengal, India.
+                </p>
+                <div class="flex space-x-4">
+                    <a href="#" class="w-10 h-10 bg-gray-900 rounded-full flex items-center justify-center hover:bg-rose-600 hover:-translate-y-1 transition-all"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="w-10 h-10 bg-gray-900 rounded-full flex items-center justify-center hover:bg-rose-600 hover:-translate-y-1 transition-all"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="w-10 h-10 bg-gray-900 rounded-full flex items-center justify-center hover:bg-rose-600 hover:-translate-y-1 transition-all"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+            
+            <div>
+                <h4 class="font-black text-sm tracking-widest uppercase mb-6 text-white">Help & Support</h4>
+                <ul class="space-y-4 text-sm font-medium text-gray-400">
+                    <li><a href="profile.html" class="hover:text-rose-500 transition">Track Your Order</a></li>
+                    <li><a href="#" class="hover:text-rose-500 transition">Return Policy</a></li>
+                    <li><a href="#" class="hover:text-rose-500 transition">Shipping Info</a></li>
+                    <li><a href="contact.html" class="hover:text-rose-500 transition">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="font-black text-sm tracking-widest uppercase mb-6 text-white">Categories</h4>
+                <ul class="space-y-4 text-sm font-medium text-gray-400">
+                    <li><a href="shop.html" class="hover:text-rose-500 transition">Oversized T-Shirts</a></li>
+                    <li><a href="anime.html" class="hover:text-rose-500 transition">Anime Collection</a></li>
+                    <li><a href="shop.html" class="hover:text-rose-500 transition">Plain & Solids</a></li>
+                    <li><a href="shop.html" class="hover:text-rose-500 transition">Graphic Prints</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="font-black text-sm tracking-widest uppercase mb-6 text-white">Crazy Newsletter</h4>
+                <p class="text-gray-400 text-sm mb-4 font-medium">Join the club to get VIP discounts and early access to drops.</p>
+                <div class="flex h-12">
+                    <input type="email" placeholder="Your email address" class="bg-gray-900 text-white px-4 py-3 text-sm rounded-l-xl focus:outline-none w-full border border-gray-800 focus:border-rose-600 transition">
+                    <button class="bg-rose-600 px-6 text-sm font-black rounded-r-xl hover:bg-rose-700 transition uppercase tracking-widest">Subscribe</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center text-center sm:text-left gap-4">
+            <p class="text-gray-500 text-xs font-bold uppercase tracking-widest">© 2026 Crazy T-Shirt. All Rights Reserved.</p>
+            <div class="flex space-x-4 text-2xl text-gray-600">
+                <i class="fa-brands fa-cc-visa"></i>
+                <i class="fa-brands fa-cc-mastercard"></i>
+                <i class="fa-brands fa-google-pay"></i>
+                <i class="fa-brands fa-apple-pay"></i>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Navigation Bar (Sticky for Phones) -->
+    <div class="md:hidden fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 z-50 px-6 py-3 flex justify-between items-center shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
+        <a href="index.html" class="flex flex-col items-center text-rose-600"><i class="fa-solid fa-house text-xl"></i><span class="text-[9px] font-bold mt-1 uppercase">Home</span></a>
+        <a href="shop.html" class="flex flex-col items-center text-gray-400 hover:text-black"><i class="fa-solid fa-border-all text-xl"></i><span class="text-[9px] font-bold mt-1 uppercase">Shop</span></a>
+        <a href="wishlist.html" class="flex flex-col items-center text-gray-400 hover:text-black relative"><i class="fa-regular fa-heart text-xl"></i><span class="text-[9px] font-bold mt-1 uppercase">Wishlist</span></a>
+        <a href="cart.html" class="flex flex-col items-center text-gray-400 hover:text-black relative"><i class="fa-solid fa-bag-shopping text-xl"></i><span class="absolute -top-1 -right-2 bg-rose-600 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">2</span><span class="text-[9px] font-bold mt-1 uppercase">Cart</span></a>
+        <a href="profile.html" class="flex flex-col items-center text-gray-400 hover:text-black"><i class="fa-regular fa-user text-xl"></i><span class="text-[9px] font-bold mt-1 uppercase">Profile</span></a>
+    </div>
+
+    <!-- Live Toast Notification Element -->
+    <div id="toast" class="fixed top-24 right-4 z-50 bg-black text-white px-6 py-4 rounded-xl shadow-2xl flex items-center space-x-4 toast-enter border-l-4 border-rose-600 max-w-sm">
+        <div id="toast-icon" class="text-rose-500 text-2xl"><i class="fa-solid fa-circle-check"></i></div>
+        <div>
+            <h4 class="font-black text-sm uppercase tracking-widest" id="toast-title">Success</h4>
+            <p class="text-xs text-gray-300 font-medium mt-0.5" id="toast-message">Item added to cart.</p>
+        </div>
+    </div>
+
+    <!-- Interactive JavaScript -->
+    <script>
+        // Update Cart & Wishlist counts
+        let cartCount = 2;
+        let wishlistCount = 0;
+
+        // Toast Notification System
+        function showToast(title, message, iconClass) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-title').innerText = title;
+            document.getElementById('toast-message').innerText = message;
+            document.getElementById('toast-icon').innerHTML = `<i class="${iconClass}"></i>`;
+            
+            toast.classList.remove('toast-enter', 'toast-hide');
+            toast.classList.add('toast-show');
+            
+            setTimeout(() => {
+                toast.classList.remove('toast-show');
+                toast.classList.add('toast-hide');
+                setTimeout(() => {
+                    toast.classList.remove('toast-hide');
+                    toast.classList.add('toast-enter');
+                }, 300);
+            }, 3000); // Hide after 3 seconds
+        }
+
+        // Add to Cart Function
+        function addToCart(productName, price) {
+            cartCount++;
+            document.getElementById('nav-cart-count').innerText = cartCount;
+            // Update mobile cart count if exists
+            const mobileCart = document.querySelector('.md\\:hidden .fa-bag-shopping').nextElementSibling;
+            if(mobileCart) mobileCart.innerText = cartCount;
+            
+            showToast('Added to Cart', `${productName} (₹${price}) has been added.`, 'fa-solid fa-bag-shopping text-rose-500');
+        }
+
+        // Add to Wishlist Function
+        function addToWishlist(productName) {
+            wishlistCount++;
+            document.getElementById('nav-wishlist-count').innerText = wishlistCount;
+            showToast('Saved to Wishlist', `${productName} saved for later.`, 'fa-solid fa-heart text-rose-500');
+        }
+    </script>
+</body>
+</html>

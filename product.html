@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classic Black Oversized | Crazy T-Shirt</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style> 
+        body { font-family: 'Outfit', sans-serif; overflow-x: hidden; }
+        .toast-enter { transform: translateY(100%); opacity: 0; }
+        .toast-show { transform: translateY(0); opacity: 1; transition: all 0.3s ease; }
+        .toast-hide { transform: translateY(100%); opacity: 0; transition: all 0.3s ease; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 selection:bg-rose-500 selection:text-white pb-20 sm:pb-0">
+
+    <!-- Header -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <button class="md:hidden text-2xl hover:text-rose-600"><i class="fa-solid fa-arrow-left"></i></button>
+            <a href="index.html" class="flex items-center gap-1 group">
+                <svg class="w-7 h-7 text-rose-600" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                <span class="text-2xl font-black tracking-tighter uppercase">CRAZY<span class="text-rose-600">.</span></span>
+            </a>
+            <div class="flex items-center space-x-5 text-xl">
+                <a href="wishlist.html" class="hover:text-rose-600 transition hidden sm:block"><i class="fa-regular fa-heart"></i></a>
+                <a href="cart.html" class="hover:text-rose-600 transition relative">
+                    <i class="fa-bag-shopping fa-solid"></i>
+                    <span id="nav-cart-count" class="absolute -top-1.5 -right-2 bg-rose-600 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold shadow-sm">2</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Product Details -->
+    <section class="py-6 sm:py-12 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 bg-white lg:bg-transparent rounded-3xl lg:rounded-none shadow-sm lg:shadow-none">
+        
+        <!-- Breadcrumb -->
+        <nav class="hidden sm:flex text-xs font-bold text-gray-400 uppercase tracking-widest mb-8">
+            <a href="index.html" class="hover:text-black transition">Home</a> <span class="mx-2">/</span>
+            <a href="shop.html" class="hover:text-black transition">Oversized</a> <span class="mx-2">/</span>
+            <span class="text-black">Classic Black</span>
+        </nav>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
+            <!-- Left Side: Image Gallery -->
+            <div class="space-y-4">
+                <div class="bg-gray-100 rounded-2xl overflow-hidden aspect-[4/5] relative shadow-sm border border-gray-100">
+                    <span class="absolute top-4 left-4 bg-black text-white text-[10px] font-bold px-3 py-1 rounded uppercase z-10">Bestseller</span>
+                    <img id="main-image" src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=80" class="w-full h-full object-cover">
+                </div>
+                <div class="grid grid-cols-4 gap-2 sm:gap-4">
+                    <img onclick="changeImage(this.src)" src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=300&q=80" class="w-full aspect-square object-cover rounded-xl border-2 border-black cursor-pointer bg-gray-100 thumbnail">
+                    <img onclick="changeImage(this.src)" src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=300&q=80" class="w-full aspect-square object-cover rounded-xl border-2 border-transparent hover:border-gray-300 cursor-pointer bg-gray-100 thumbnail transition">
+                    <img onclick="changeImage(this.src)" src="https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&w=300&q=80" class="w-full aspect-square object-cover rounded-xl border-2 border-transparent hover:border-gray-300 cursor-pointer bg-gray-100 thumbnail transition">
+                    <div class="w-full aspect-square rounded-xl bg-gray-100 flex items-center justify-center text-xs font-bold text-gray-500 cursor-pointer hover:bg-gray-200 transition">+ Video</div>
+                </div>
+            </div>
+
+            <!-- Right Side: Info -->
+            <div class="flex flex-col justify-center">
+                <div class="flex items-center space-x-2 text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">
+                    <i class="fa-solid fa-star text-yellow-400 text-sm"></i> 4.9 (128 Reviews)
+                </div>
+                
+                <h1 class="text-3xl sm:text-5xl font-black tracking-tight text-gray-900 mb-2 leading-tight">Classic Black Oversized Tee</h1>
+                
+                <div class="flex items-center space-x-4 mt-2 mb-6">
+                    <span class="text-3xl sm:text-4xl font-black text-rose-600">₹799</span>
+                    <span class="text-lg text-gray-400 line-through font-bold">₹1,199</span>
+                    <span class="bg-red-100 text-red-600 text-xs font-bold px-2 py-1 rounded uppercase">Save 33%</span>
+                </div>
+
+                <p class="text-gray-600 text-sm sm:text-base font-medium leading-relaxed mb-6">
+                    Our signature oversized fit t-shirt made from 100% super-combed cotton. Heavyweight 240 GSM fabric ensures durability and the perfect streetwear drape. Bio-washed for ultimate softness.
+                </p>
+
+                <!-- Color Options -->
+                <div class="mb-6 border-t border-gray-100 pt-6">
+                    <h3 class="font-bold text-xs tracking-widest uppercase text-gray-500 mb-3">Color: <span class="text-black ml-1" id="color-name">Pitch Black</span></h3>
+                    <div class="flex space-x-3 sm:space-x-4">
+                        <button onclick="selectOption('color', 'Pitch Black', this)" class="color-btn w-10 h-10 rounded-full bg-black ring-2 ring-offset-2 ring-black shadow-sm transition"></button>
+                        <button onclick="selectOption('color', 'Pure White', this)" class="color-btn w-10 h-10 rounded-full bg-white border border-gray-300 hover:ring-2 ring-offset-2 ring-gray-300 transition shadow-sm"></button>
+                        <button onclick="selectOption('color', 'Crimson Red', this)" class="color-btn w-10 h-10 rounded-full bg-rose-600 hover:ring-2 ring-offset-2 ring-rose-600 transition shadow-sm"></button>
+                    </div>
+                </div>
+
+                <!-- Size Options -->
+                <div class="mb-8">
+                    <div class="flex justify-between items-center mb-3">
+                        <h3 class="font-bold text-xs tracking-widest uppercase text-gray-500">Size</h3>
+                        <span class="text-xs font-bold text-gray-400 underline cursor-pointer hover:text-black">Size Guide</span>
+                    </div>
+                    <div class="flex flex-wrap gap-2 sm:gap-3">
+                        <button onclick="selectOption('size', 'S', this)" class="size-btn w-12 h-12 sm:w-14 sm:h-14 rounded-lg border-2 border-gray-200 font-bold text-gray-600 hover:border-black hover:text-black transition">S</button>
+                        <button onclick="selectOption('size', 'M', this)" class="size-btn w-12 h-12 sm:w-14 sm:h-14 rounded-lg border-2 border-gray-200 font-bold text-gray-600 hover:border-black hover:text-black transition">M</button>
+                        <button onclick="selectOption('size', 'L', this)" class="size-btn w-12 h-12 sm:w-14 sm:h-14 rounded-lg border-2 border-black bg-black font-bold text-white transition shadow-md">L</button>
+                        <button onclick="selectOption('size', 'XL', this)" class="size-btn w-12 h-12 sm:w-14 sm:h-14 rounded-lg border-2 border-gray-200 font-bold text-gray-600 hover:border-black hover:text-black transition relative">
+                            XL <span class="absolute -top-2 -right-2 bg-rose-100 text-rose-600 text-[8px] px-1 rounded uppercase">Few</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex gap-4 mb-4">
+                    <div class="flex items-center justify-between border-2 border-gray-200 rounded-xl w-32 h-14 px-4 bg-white">
+                        <button onclick="updateQty(-1)" class="text-gray-500 hover:text-black font-bold"><i class="fa-solid fa-minus"></i></button>
+                        <span id="qty" class="font-black text-lg">1</span>
+                        <button onclick="updateQty(1)" class="text-gray-500 hover:text-black font-bold"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+                    <button onclick="addToCart()" class="flex-1 bg-black text-white h-14 rounded-xl font-black text-xs sm:text-sm uppercase tracking-widest hover:bg-rose-600 hover:shadow-xl transition-all flex items-center justify-center space-x-2">
+                        <i class="fa-solid fa-cart-shopping text-base"></i> <span>Add To Cart</span>
+                    </button>
+                    <button onclick="addToWishlist()" class="w-14 h-14 border-2 border-gray-200 bg-white rounded-xl flex items-center justify-center text-gray-400 hover:text-rose-600 hover:border-rose-600 transition text-xl">
+                        <i class="fa-regular fa-heart"></i>
+                    </button>
+                </div>
+                <button onclick="window.location.href='checkout.html'" class="w-full bg-rose-600 text-white h-14 rounded-xl font-black text-sm uppercase tracking-widest hover:bg-rose-700 transition shadow-lg mb-8">
+                    Buy It Now
+                </button>
+
+                <!-- Product Accords/Features -->
+                <div class="border-t border-gray-100 pt-6 space-y-4">
+                    <div class="flex items-center space-x-4 bg-gray-50 p-4 rounded-xl border border-gray-100">
+                        <i class="fa-solid fa-truck-fast text-2xl text-black"></i>
+                        <div>
+                            <h4 class="font-bold text-sm uppercase">Free Delivery</h4>
+                            <p class="text-xs font-medium text-gray-500 mt-0.5">Enter postal code for Delivery Availability</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4 bg-gray-50 p-4 rounded-xl border border-gray-100">
+                        <i class="fa-solid fa-rotate-left text-2xl text-black"></i>
+                        <div>
+                            <h4 class="font-bold text-sm uppercase">Return Delivery</h4>
+                            <p class="text-xs font-medium text-gray-500 mt-0.5">Free 7 Days Delivery Return.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cross Selling Section -->
+    <section class="py-16 bg-white sm:bg-gray-50 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-2xl sm:text-3xl font-black tracking-tight uppercase mb-8">You May Also Like</h2>
+            
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
+                <!-- Suggestion 1 -->
+                <div class="group cursor-pointer bg-white sm:bg-transparent p-3 sm:p-0 rounded-2xl shadow-sm sm:shadow-none border border-gray-100 sm:border-none" onclick="window.location.href='product.html'">
+                    <div class="relative bg-gray-100 rounded-xl overflow-hidden aspect-[4/5]">
+                        <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    </div>
+                    <div class="mt-3 text-center sm:text-left">
+                        <h3 class="font-bold text-sm sm:text-base text-gray-900 group-hover:text-rose-600 transition truncate">Anime Street Edition</h3>
+                        <p class="font-black text-sm sm:text-lg mt-1 text-black">₹899</p>
+                    </div>
+                </div>
+                <!-- Suggestion 2 -->
+                <div class="group cursor-pointer bg-white sm:bg-transparent p-3 sm:p-0 rounded-2xl shadow-sm sm:shadow-none border border-gray-100 sm:border-none" onclick="window.location.href='product.html'">
+                    <div class="relative bg-gray-100 rounded-xl overflow-hidden aspect-[4/5]">
+                        <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    </div>
+                    <div class="mt-3 text-center sm:text-left">
+                        <h3 class="font-bold text-sm sm:text-base text-gray-900 group-hover:text-rose-600 transition truncate">Pure White Basic</h3>
+                        <p class="font-black text-sm sm:text-lg mt-1 text-black">₹599</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile Bottom Navigation Bar -->
+    <div class="md:hidden fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 z-50 px-6 py-3 flex justify-between items-center shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
+        <a href="index.html" class="flex flex-col items-center text-gray-400 hover:text-black"><i class="fa-solid fa-house text-xl"></i><span class="text-[9px] font-bold mt-1 uppercase">Home</span></a>
+        <a href="shop.html" class="flex flex-col items-center text-gray-400 hover:text-black"><i class="fa-solid fa-border-all text-xl"></i><span class="text-[9px] font-bold mt-1 uppercase">Shop</span></a>
+        <a href="wishlist.html" class="flex flex-col items-center text-gray-400 hover:text-black"><i class="fa-regular fa-heart text-xl"></i><span class="text-[9px] font-bold mt-1 uppercase">Wishlist</span></a>
+        <a href="cart.html" class="flex flex-col items-center text-gray-400 hover:text-black relative"><i class="fa-solid fa-bag-shopping text-xl"></i><span id="mobile-cart-count" class="absolute -top-1 -right-2 bg-rose-600 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">2</span><span class="text-[9px] font-bold mt-1 uppercase">Cart</span></a>
+        <a href="profile.html" class="flex flex-col items-center text-gray-400 hover:text-black"><i class="fa-regular fa-user text-xl"></i><span class="text-[9px] font-bold mt-1 uppercase">Profile</span></a>
+    </div>
+
+    <!-- Live Toast Notification -->
+    <div id="toast" class="fixed top-20 sm:top-24 right-4 z-50 bg-black text-white px-6 py-4 rounded-xl shadow-2xl flex items-center space-x-4 toast-enter border-l-4 border-black max-w-[90vw] sm:max-w-sm">
+        <div id="toast-icon" class="text-white text-2xl"><i class="fa-solid fa-circle-check"></i></div>
+        <div>
+            <h4 class="font-black text-sm uppercase tracking-widest" id="toast-title">Success</h4>
+            <p class="text-xs text-gray-300 font-medium mt-0.5" id="toast-message">Action completed.</p>
+        </div>
+    </div>
+
+    <!-- JS for Product Interactions -->
+    <script>
+        let cartCount = 2;
+        let qty = 1;
+
+        // Image Gallery Swapper
+        function changeImage(src) {
+            document.getElementById('main-image').src = src;
+            // Update border logic for thumbnails (simple version)
+            document.querySelectorAll('.thumbnail').forEach(t => {
+                t.classList.remove('border-black');
+                t.classList.add('border-transparent');
+            });
+            event.target.classList.remove('border-transparent');
+            event.target.classList.add('border-black');
+        }
+
+        // Color & Size Selector visually
+        function selectOption(type, value, btn) {
+            if(type === 'color') {
+                document.getElementById('color-name').innerText = value;
+                document.querySelectorAll('.color-btn').forEach(b => b.classList.remove('ring-black', 'ring-gray-300', 'ring-rose-600'));
+                // Just add active styling back to clicked
+                if(value==='Pitch Black') btn.classList.add('ring-black');
+                else if(value==='Pure White') btn.classList.add('ring-gray-300');
+                else btn.classList.add('ring-rose-600');
+            } else if (type === 'size') {
+                document.querySelectorAll('.size-btn').forEach(b => {
+                    b.classList.remove('border-black', 'bg-black', 'text-white', 'shadow-md');
+                    b.classList.add('border-gray-200', 'text-gray-600');
+                });
+                btn.classList.remove('border-gray-200', 'text-gray-600');
+                btn.classList.add('border-black', 'bg-black', 'text-white', 'shadow-md');
+            }
+        }
+
+        // Qty logic
+        function updateQty(change) {
+            qty += change;
+            if(qty < 1) qty = 1;
+            document.getElementById('qty').innerText = qty;
+        }
+
+        // Toast logic
+        function showToast(title, message, borderColor, iconHtml) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-title').innerText = title;
+            document.getElementById('toast-message').innerText = message;
+            document.getElementById('toast-icon').innerHTML = iconHtml;
+            toast.className = `fixed top-20 sm:top-24 right-4 z-50 bg-black text-white px-6 py-4 rounded-xl shadow-2xl flex items-center space-x-4 border-l-4 ${borderColor} max-w-[90vw] sm:max-w-sm toast-enter`;
+            setTimeout(() => { toast.classList.remove('toast-enter'); toast.classList.add('toast-show'); }, 10);
+            setTimeout(() => { toast.classList.remove('toast-show'); toast.classList.add('toast-hide'); }, 3000);
+        }
+
+        function addToCart() {
+            cartCount += qty;
+            document.getElementById('nav-cart-count').innerText = cartCount;
+            if(document.getElementById('mobile-cart-count')) document.getElementById('mobile-cart-count').innerText = cartCount;
+            showToast('Added to Cart', `${qty}x Classic Black added successfully.`, 'border-rose-600', '<i class="fa-solid fa-cart-shopping text-rose-500"></i>');
+        }
+
+        function addToWishlist() {
+            showToast('Wishlist Saved', `Item saved for later.`, 'border-rose-600', '<i class="fa-solid fa-heart text-rose-500"></i>');
+        }
+    </script>
+</body>
+</html>

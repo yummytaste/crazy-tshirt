@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wishlist | Crazy T-Shirt</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Outfit', sans-serif; overflow-x: hidden; }
+        /* Toast Animation */
+        .toast-enter { transform: translateY(100%); opacity: 0; }
+        .toast-show { transform: translateY(0); opacity: 1; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .toast-hide { transform: translateY(100%); opacity: 0; transition: all 0.3s ease-in; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 selection:bg-rose-500 selection:text-white pb-20 sm:pb-0">
+
+    <!-- Main Navigation Header (Same as Home) -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <button class="md:hidden text-2xl hover:text-rose-600 transition"><i class="fa-solid fa-bars"></i></button>
+            
+            <a href="index.html" class="flex items-center gap-1 group">
+                <svg class="w-8 h-8 text-rose-600 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                <span class="text-3xl font-black tracking-tighter uppercase">CRAZY<span class="text-rose-600">.</span></span>
+            </a>
+
+            <nav class="hidden md:flex items-center space-x-8 font-bold text-sm tracking-wide uppercase">
+                <a href="index.html" class="hover:text-rose-600 transition">Home</a>
+                <a href="shop.html" class="hover:text-rose-600 transition">Shop All</a>
+                <a href="anime.html" class="hover:text-rose-600 transition">Anime Edit</a>
+                <a href="profile.html" class="hover:text-rose-600 transition">My Account</a>
+            </nav>
+            
+            <div class="flex items-center space-x-5 text-xl">
+                <a href="shop.html" class="hover:text-rose-600 transition"><i class="fa-solid fa-magnifying-glass"></i></a>
+                <a href="wishlist.html" class="text-rose-600 hidden sm:block relative">
+                    <i class="fa-solid fa-heart"></i>
+                    <span id="nav-wishlist-count" class="absolute -top-1.5 -right-2 bg-black text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold shadow-sm">4</span>
+                </a>
+                <a href="cart.html" class="hover:text-rose-600 transition relative">
+                    <i class="fa-bag-shopping fa-solid"></i>
+                    <span id="nav-cart-count" class="absolute -top-1.5 -right-2 bg-rose-600 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold shadow-sm">2</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Wishlist Main Section -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-16">
+        
+        <!-- Breadcrumb & Header -->
+        <div class="flex flex-col sm:flex-row sm:justify-between sm:items-end mb-10 gap-6 border-b border-gray-200 pb-8">
+            <div>
+                <nav class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-4">
+                    <a href="index.html" class="hover:text-black transition">Home</a> <span class="mx-2">/</span>
+                    <a href="profile.html" class="hover:text-black transition">Profile</a> <span class="mx-2">/</span>
+                    <span class="text-rose-600">Wishlist</span>
+                </nav>
+                <div class="flex items-center space-x-3">
+                    <h1 class="text-4xl sm:text-5xl font-black tracking-tight uppercase">My Wishlist</h1>
+                    <span class="bg-gray-200 text-black text-sm font-black px-3 py-1 rounded-full"><span id="page-wishlist-count">4</span> items</span>
+                </div>
+            </div>
+            
+            <!-- Quick Actions -->
+            <div class="flex gap-4">
+                <button class="border-2 border-gray-200 text-gray-700 px-5 py-2.5 rounded-xl font-bold text-xs uppercase tracking-widest hover:border-black hover:text-black transition shadow-sm flex items-center">
+                    <i class="fa-solid fa-share-nodes mr-2"></i> Share
+                </button>
+                <button onclick="addAllToCart()" class="bg-black text-white px-5 py-2.5 rounded-xl font-bold text-xs uppercase tracking-widest hover:bg-rose-600 transition shadow-lg flex items-center">
+                    <i class="fa-solid fa-cart-plus mr-2"></i> Add All To Cart
+                </button>
+            </div>
+        </div>
+
+        <!-- Wishlist Grid -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8" id="wishlist-container">
+            
+            <!-- Item 1 (Price Dropped) -->
+            <div class="group relative bg-white p-3 sm:p-4 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-gray-100 flex flex-col" id="wishlist-item-1">
+                <button onclick="removeItem('wishlist-item-1', 'Tokyo Drift Anime Tee')" class="absolute top-5 right-5 w-8 h-8 bg-white/80 backdrop-blur text-gray-400 hover:text-rose-600 hover:bg-white rounded-full flex items-center justify-center z-10 text-sm transition shadow-sm"><i class="fa-solid fa-xmark"></i></button>
+                <div class="bg-gray-100 rounded-xl overflow-hidden aspect-[4/5] cursor-pointer" onclick="window.location.href='product.html'">
+                    <span class="absolute top-5 left-5 bg-green-500 text-white text-[10px] font-bold px-2 py-1 rounded-md uppercase z-10 shadow-sm"><i class="fa-solid fa-arrow-trend-down mr-1"></i> Price Drop</span>
+                    <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                </div>
+                <div class="mt-4 flex-1 flex flex-col">
+                    <h3 class="font-bold text-sm sm:text-base text-gray-900 group-hover:text-rose-600 transition line-clamp-1">Tokyo Drift Anime Tee</h3>
+                    <p class="text-xs font-bold text-gray-400 mt-1 uppercase">Size: M | Color: White</p>
+                    <div class="mt-2 mb-4">
+                        <span class="font-black text-lg sm:text-xl text-rose-600">₹799</span>
+                        <span class="text-xs text-gray-400 line-through ml-2 font-bold">₹899</span>
+                    </div>
+                    <button onclick="moveToCart('Tokyo Drift Anime Tee')" class="mt-auto w-full border-2 border-black text-black py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider hover:bg-black hover:text-white transition">Move to Cart</button>
+                </div>
+            </div>
+
+            <!-- Item 2 (Low Stock) -->
+            <div class="group relative bg-white p-3 sm:p-4 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-gray-100 flex flex-col" id="wishlist-item-2">
+                <button onclick="removeItem('wishlist-item-2', 'Classic Black Oversized')" class="absolute top-5 right-5 w-8 h-8 bg-white/80 backdrop-blur text-gray-400 hover:text-rose-600 hover:bg-white rounded-full flex items-center justify-center z-10 text-sm transition shadow-sm"><i class="fa-solid fa-xmark"></i></button>
+                <div class="bg-gray-100 rounded-xl overflow-hidden aspect-[4/5] cursor-pointer" onclick="window.location.href='product.html'">
+                    <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                </div>
+                <div class="mt-4 flex-1 flex flex-col">
+                    <h3 class="font-bold text-sm sm:text-base text-gray-900 group-hover:text-rose-600 transition line-clamp-1">Classic Black Oversized</h3>
+                    <p class="text-xs font-bold text-rose-500 mt-1 uppercase"><i class="fa-solid fa-fire mr-1"></i> Only 2 left in size L</p>
+                    <div class="mt-2 mb-4">
+                        <span class="font-black text-lg sm:text-xl text-black">₹799</span>
+                    </div>
+                    <button onclick="moveToCart('Classic Black Oversized')" class="mt-auto w-full border-2 border-black text-black py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider hover:bg-black hover:text-white transition">Move to Cart</button>
+                </div>
+            </div>
+
+            <!-- Item 3 (In Stock) -->
+            <div class="group relative bg-white p-3 sm:p-4 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-gray-100 flex flex-col" id="wishlist-item-3">
+                <button onclick="removeItem('wishlist-item-3', 'Cyberpunk Acid Wash')" class="absolute top-5 right-5 w-8 h-8 bg-white/80 backdrop-blur text-gray-400 hover:text-rose-600 hover:bg-white rounded-full flex items-center justify-center z-10 text-sm transition shadow-sm"><i class="fa-solid fa-xmark"></i></button>
+                <div class="bg-gray-100 rounded-xl overflow-hidden aspect-[4/5] cursor-pointer" onclick="window.location.href='product.html'">
+                    <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                </div>
+                <div class="mt-4 flex-1 flex flex-col">
+                    <h3 class="font-bold text-sm sm:text-base text-gray-900 group-hover:text-rose-600 transition line-clamp-1">Cyberpunk Acid Wash</h3>
+                    <p class="text-xs font-bold text-gray-400 mt-1 uppercase">Size: XL | Color: Grey</p>
+                    <div class="mt-2 mb-4">
+                        <span class="font-black text-lg sm:text-xl text-black">₹999</span>
+                    </div>
+                    <button onclick="moveToCart('Cyberpunk Acid Wash')" class="mt-auto w-full border-2 border-black text-black py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider hover:bg-black hover:text-white transition">Move to Cart</button>
+                </div>
+            </div>
+
+            <!-- Item 4 (Out of Stock) -->
+            <div class="group relative bg-white p-3 sm:p-4 rounded-2xl shadow-sm hover:shadow-xl transition duration-300 border border-gray-100 flex flex-col opacity-75 grayscale hover:grayscale-0 transition-all" id="wishlist-item-4">
+                <button onclick="removeItem('wishlist-item-4', 'Minimal White Solid')" class="absolute top-5 right-5 w-8 h-8 bg-white/80 backdrop-blur text-gray-400 hover:text-rose-600 hover:bg-white rounded-full flex items-center justify-center z-10 text-sm transition shadow-sm"><i class="fa-solid fa-xmark"></i></button>
+                <div class="bg-gray-100 rounded-xl overflow-hidden aspect-[4/5] relative">
+                    <div class="absolute inset-0 bg-white/50 z-10 flex items-center justify-center">
+                        <span class="bg-black text-white text-xs font-black px-4 py-2 uppercase tracking-widest">Out of Stock</span>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=600&q=80" class="w-full h-full object-cover">
+                </div>
+                <div class="mt-4 flex-1 flex flex-col">
+                    <h3 class="font-bold text-sm sm:text-base text-gray-900 line-clamp-1">Minimal White Solid</h3>
+                    <div class="mt-2 mb-4">
+                        <span class="font-black text-lg sm:text-xl text-gray-500">₹599</span>
+                    </div>
+                    <button disabled class="mt-auto w-full bg-gray-200 text-gray-400 py-2.5 rounded-lg text-xs font-bold uppercase tracking-wider cursor-not-allowed">Notify Me</button>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Empty Wishlist State (Hidden by default, shown via JS when empty) -->
+        <div id="empty-state" class="hidden text-center py-20">
+            <div class="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto text-4xl text-gray-300 mb-6">
+                <i class="fa-regular fa-heart"></i>
+            </div>
+            <h2 class="text-3xl font-black uppercase tracking-tight mb-3">Your wishlist is empty</h2>
+            <p class="text-gray-500 font-medium mb-8">Looks like you haven't saved any crazy tees yet.</p>
+            <a href="shop.html" class="bg-black text-white px-8 py-3.5 rounded-xl font-bold text-sm uppercase tracking-widest hover:bg-rose-600 transition shadow-lg">Start Shopping</a>
+        </div>
+    </section>
+
+    <!-- RECOMMENDED FOR YOU SECTION (Cross-Selling) -->
+    <section class="py-16 bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-rose-500 font-bold tracking-widest uppercase text-xs">Based on your saves</span>
+                <h2 class="text-3xl font-black tracking-tight uppercase mt-2">Recommended For You</h2>
+            </div>
+
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
+                <!-- Rec Item 1 -->
+                <div class="group cursor-pointer bg-gray-50 p-3 sm:p-4 rounded-2xl hover:bg-white hover:shadow-xl transition duration-300 border border-transparent hover:border-gray-100">
+                    <div class="relative bg-gray-200 rounded-xl overflow-hidden aspect-[4/5]">
+                        <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&w=600&q=80" onclick="window.location.href='product.html'" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3 class="font-bold text-sm text-gray-900 truncate">Vintage Graphic Tee</h3>
+                        <p class="font-black text-base mt-1 text-black">₹699</p>
+                    </div>
+                </div>
+                <!-- Rec Item 2 -->
+                <div class="group cursor-pointer bg-gray-50 p-3 sm:p-4 rounded-2xl hover:bg-white hover:shadow-xl transition duration-300 border border-transparent hover:border-gray-100">
+                    <div class="relative bg-gray-200 rounded-xl overflow-hidden aspect-[4/5]">
+                        <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80" onclick="window.location.href='product.html'" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3 class="font-bold text-sm text-gray-900 truncate">Dark Core Oversized</h3>
+                        <p class="font-black text-base mt-1 text-black">₹799</p>
+                    </div>
+                </div>
+                <!-- Rec Item 3 -->
+                <div class="group cursor-pointer bg-gray-50 p-3 sm:p-4 rounded-2xl hover:bg-white hover:shadow-xl transition duration-300 border border-transparent hover:border-gray-100 hidden sm:block">
+                    <div class="relative bg-gray-200 rounded-xl overflow-hidden aspect-[4/5]">
+                        <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&w=600&q=80" onclick="window.location.href='product.html'" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3 class="font-bold text-sm text-gray-900 truncate">Manga Edit Edition</h3>
+                        <p class="font-black text-base mt-1 text-black">₹999</p>
+                    </div>
+                </div>
+                <!-- Rec Item 4 -->
+                <div class="group cursor-pointer bg-gray-50 p-3 sm:p-4 rounded-2xl hover:bg-white hover:shadow-xl transition duration-300 border border-transparent hover:border-gray-100 hidden sm:block">
+                    <div class="relative bg-gray-200 rounded-xl overflow-hidden aspect-[4/5]">
+                        <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=600&q=80" onclick="window.location.href='product.html'" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    </div>
+                    <div class="mt-4 text-center">
+                        <h3 class="font-bold text-sm text-gray-900 truncate">Red Strike Series</h3>
+                        <p class="font-black text-base mt-1 text-black">₹849</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white pt-20 pb-12 border-t-4 border-rose-600">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16 border-b border-gray-800 pb-16">
+            <div class="space-y-6">
+                <a href="index.html" class="flex items-center gap-1 group">
+                    <svg class="w-8 h-8 text-rose-600" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    <span class="text-3xl font-black tracking-tighter uppercase">CRAZY<span class="text-rose-600">.</span></span>
+                </a>
+                <p class="text-gray-400 text-sm font-medium leading-relaxed">
+                    Redefining streetwear for the next generation. Designed in West Bengal, India.
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-black text-sm tracking-widest uppercase mb-6 text-white">Help & Support</h4>
+                <ul class="space-y-4 text-sm font-medium text-gray-400">
+                    <li><a href="profile.html" class="hover:text-rose-500 transition">Track Your Order</a></li>
+                    <li><a href="#" class="hover:text-rose-500 transition">Return Policy</a></li>
+                    <li><a href="contact.html" class="hover:text-rose-500 transition">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="font-black text-sm tracking-widest uppercase mb-6 text-white">Categories</h4>
+                <ul class="space-y-4 text-sm font-medium text-gray-400">
+                    <li><a href="shop.html" class="hover:text-rose-500 transition">Oversized T-Shirts</a></li>
+                    <li><a href="anime.html" class="hover:text-rose-500 transition">Anime Collection</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="font-black text-sm tracking-widest uppercase mb-6 text-white">Crazy Newsletter</h4>
+                <div class="flex h-12">
+                    <input type="email" placeholder="Your email address" class="bg-gray-900 text-white px-4 py-3 text-sm rounded-l-xl focus:outline-none w-full border border-gray-800 focus:border-rose-600 transition">
+                    <button class="bg-rose-600 px-6 text-sm font-black rounded-r-xl hover:bg-rose-700 transition uppercase tracking-widest">Subscribe</button>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-gray-500 text-xs font-bold uppercase tracking-widest">© 2026 Crazy T-Shirt. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Navigation Bar (Sticky for Phones) -->
+    <div class="md:hidden fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 z-50 px-6 py-3 flex justify-between items-center shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
+        <a href="index.html" class="flex flex-col items-center text-gray-400 hover:text-black"><i class="fa-solid fa-house text-xl"></i><span class="text-[9px] font-bold mt-1 uppercase">Home</span></a>
+        <a href="shop.html" class="flex flex-col items-center text-gray-400 hover:text-black"><i class="fa-solid fa-border-all text-xl"></i><span class="text-[9px] font-bold mt-1 uppercase">Shop</span></a>
+        <a href="wishlist.html" class="flex flex-col items-center text-rose-600 relative"><i class="fa-solid fa-heart text-xl"></i><span class="text-[9px] font-bold mt-1 uppercase">Wishlist</span></a>
+        <a href="cart.html" class="flex flex-col items-center text-gray-400 hover:text-black relative"><i class="fa-solid fa-bag-shopping text-xl"></i><span id="mobile-cart-count" class="absolute -top-1 -right-2 bg-rose-600 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">2</span><span class="text-[9px] font-bold mt-1 uppercase">Cart</span></a>
+        <a href="profile.html" class="flex flex-col items-center text-gray-400 hover:text-black"><i class="fa-regular fa-user text-xl"></i><span class="text-[9px] font-bold mt-1 uppercase">Profile</span></a>
+    </div>
+
+    <!-- Live Toast Notification Element -->
+    <div id="toast" class="fixed top-24 right-4 z-50 bg-black text-white px-6 py-4 rounded-xl shadow-2xl flex items-center space-x-4 toast-enter border-l-4 border-black max-w-sm">
+        <div id="toast-icon" class="text-white text-2xl"><i class="fa-solid fa-circle-check"></i></div>
+        <div>
+            <h4 class="font-black text-sm uppercase tracking-widest" id="toast-title">Success</h4>
+            <p class="text-xs text-gray-300 font-medium mt-0.5" id="toast-message">Action completed.</p>
+        </div>
+    </div>
+
+    <!-- Interactive JavaScript -->
+    <script>
+        let currentWishlistCount = 4;
+        let cartCount = 2;
+
+        function showToast(title, message, borderColor, iconHtml) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-title').innerText = title;
+            document.getElementById('toast-message').innerText = message;
+            document.getElementById('toast-icon').innerHTML = iconHtml;
+            
+            toast.className = `fixed top-24 right-4 z-50 bg-black text-white px-6 py-4 rounded-xl shadow-2xl flex items-center space-x-4 border-l-4 ${borderColor} max-w-sm toast-enter`;
+            
+            setTimeout(() => {
+                toast.classList.remove('toast-enter');
+                toast.classList.add('toast-show');
+            }, 10);
+            
+            setTimeout(() => {
+                toast.classList.remove('toast-show');
+                toast.classList.add('toast-hide');
+            }, 3000);
+        }
+
+        function updateWishlistCount() {
+            document.getElementById('nav-wishlist-count').innerText = currentWishlistCount;
+            document.getElementById('page-wishlist-count').innerText = currentWishlistCount;
+            
+            if(currentWishlistCount === 0) {
+                document.getElementById('wishlist-container').classList.add('hidden');
+                document.getElementById('empty-state').classList.remove('hidden');
+                document.getElementById('empty-state').classList.add('block');
+            }
+        }
+
+        function removeItem(cardId, productName) {
+            const card = document.getElementById(cardId);
+            card.style.opacity = '0';
+            card.style.transform = 'scale(0.9)';
+            
+            setTimeout(() => {
+                card.remove();
+                currentWishlistCount--;
+                updateWishlistCount();
+                showToast('Removed', `${productName} removed from wishlist.`, 'border-gray-500', '<i class="fa-solid fa-trash-can text-gray-400"></i>');
+            }, 300);
+        }
+
+        function moveToCart(productName) {
+            cartCount++;
+            document.getElementById('nav-cart-count').innerText = cartCount;
+            document.getElementById('mobile-cart-count').innerText = cartCount;
+            
+            showToast('Moved to Cart', `${productName} is ready for checkout.`, 'border-rose-600', '<i class="fa-solid fa-cart-check text-rose-500"></i>');
+        }
+
+        function addAllToCart() {
+            if(currentWishlistCount === 0) return;
+            cartCount += 3; // Adding the 3 available items
+            document.getElementById('nav-cart-count').innerText = cartCount;
+            document.getElementById('mobile-cart-count').innerText = cartCount;
+            showToast('Success', 'All available items added to cart.', 'border-rose-600', '<i class="fa-solid fa-cart-shopping text-rose-500"></i>');
+        }
+    </script>
+</body>
+</html>

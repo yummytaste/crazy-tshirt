@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Checkout | Crazy T-Shirt</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Outfit', sans-serif; overflow-x: hidden; }
+        /* Toast Animation */
+        .toast-enter { transform: translateY(100%); opacity: 0; }
+        .toast-show { transform: translateY(0); opacity: 1; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .toast-hide { transform: translateY(100%); opacity: 0; transition: all 0.3s ease-in; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 selection:bg-rose-500 selection:text-white pb-20 md:pb-0">
+
+    <!-- Simplified Secure Header -->
+    <header class="bg-white border-b border-gray-200 shadow-sm py-5 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+            <a href="index.html" class="flex items-center gap-1 group">
+                <svg class="w-6 h-6 sm:w-8 sm:h-8 text-rose-600" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                <span class="text-2xl sm:text-3xl font-black tracking-tighter uppercase">CRAZY<span class="text-rose-600">.</span></span>
+            </a>
+            <div class="flex items-center space-x-4">
+                <span class="hidden sm:inline-flex items-center text-xs font-bold uppercase tracking-widest text-green-600 bg-green-50 px-3 py-1 rounded-full"><i class="fa-solid fa-lock mr-2"></i> Secure SSL</span>
+                <a href="cart.html" class="text-xs font-black text-black hover:text-rose-600 transition uppercase tracking-widest flex items-center">
+                    <i class="fa-solid fa-arrow-left mr-1"></i> Cart
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Checkout Main Section -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
+        <div class="flex flex-col-reverse lg:flex-row gap-10 lg:gap-16">
+            
+            <!-- Left Side: Forms (Contact, Shipping, Payment) -->
+            <div class="lg:w-3/5 space-y-10">
+                
+                <!-- Express Checkout -->
+                <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-gray-100 text-center relative overflow-hidden">
+                    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-rose-500"></div>
+                    <p class="text-xs font-bold uppercase tracking-widest text-gray-400 mb-6">Express Checkout</p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <button onclick="showErrorToast()" class="w-full sm:w-auto px-10 py-3.5 bg-black text-white rounded-xl shadow-lg hover:bg-gray-800 transition flex items-center justify-center space-x-2">
+                            <i class="fa-brands fa-apple text-2xl"></i> <span class="font-black text-lg">Pay</span>
+                        </button>
+                        <button onclick="showErrorToast()" class="w-full sm:w-auto px-10 py-3.5 bg-white border-2 border-gray-200 text-gray-700 rounded-xl shadow-sm hover:bg-gray-50 transition flex items-center justify-center space-x-2">
+                            <i class="fa-brands fa-google text-xl text-blue-500"></i> <span class="font-black text-lg">Pay</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="relative flex items-center py-2">
+                    <div class="flex-grow border-t border-gray-200"></div>
+                    <span class="flex-shrink-0 mx-4 text-gray-400 text-[10px] font-bold uppercase tracking-widest">Or pay with card / cod</span>
+                    <div class="flex-grow border-t border-gray-200"></div>
+                </div>
+
+                <form id="checkout-form" onsubmit="event.preventDefault(); showErrorToast();" class="space-y-10">
+                    
+                    <!-- Contact Information -->
+                    <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-gray-100">
+                        <div class="flex justify-between items-center mb-6 border-b border-gray-100 pb-4">
+                            <h2 class="text-xl font-black tracking-tight uppercase flex items-center"><span class="w-6 h-6 rounded-full bg-black text-white text-[10px] flex items-center justify-center mr-3">1</span> Contact</h2>
+                            <a href="profile.html" class="text-xs font-bold text-rose-600 hover:text-rose-700 uppercase tracking-widest">Login</a>
+                        </div>
+                        <div class="space-y-5">
+                            <div>
+                                <input type="email" id="email" placeholder="Email Address *" required class="w-full bg-gray-50 border-2 border-gray-200 text-gray-900 px-4 py-3.5 rounded-xl focus:outline-none focus:border-black transition font-bold text-sm">
+                            </div>
+                            <label class="flex items-center space-x-3 cursor-pointer group">
+                                <input type="checkbox" checked class="w-5 h-5 text-black border-gray-300 rounded focus:ring-black accent-black cursor-pointer">
+                                <span class="text-xs font-bold text-gray-500 group-hover:text-black uppercase tracking-wider transition">Email me with news and exclusive offers</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Shipping Address -->
+                    <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-gray-100">
+                        <h2 class="text-xl font-black tracking-tight uppercase mb-6 flex items-center border-b border-gray-100 pb-4"><span class="w-6 h-6 rounded-full bg-black text-white text-[10px] flex items-center justify-center mr-3">2</span> Shipping</h2>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                            <div class="sm:col-span-2 relative">
+                                <select class="w-full bg-gray-50 border-2 border-gray-200 text-gray-900 px-4 py-3.5 rounded-xl focus:outline-none focus:border-black transition font-bold text-sm appearance-none cursor-pointer">
+                                    <option>India</option>
+                                    <option>Bangladesh</option>
+                                    <option>United States</option>
+                                </select>
+                                <i class="fa-solid fa-chevron-down absolute right-4 top-5 text-gray-400 text-xs"></i>
+                            </div>
+                            <div>
+                                <input type="text" id="fname" placeholder="First Name *" required class="w-full bg-gray-50 border-2 border-gray-200 text-gray-900 px-4 py-3.5 rounded-xl focus:outline-none focus:border-black transition font-bold text-sm">
+                            </div>
+                            <div>
+                                <input type="text" id="lname" placeholder="Last Name *" required class="w-full bg-gray-50 border-2 border-gray-200 text-gray-900 px-4 py-3.5 rounded-xl focus:outline-none focus:border-black transition font-bold text-sm">
+                            </div>
+                            <div class="sm:col-span-2">
+                                <input type="text" id="address" placeholder="Address (House No, Building, Street) *" required class="w-full bg-gray-50 border-2 border-gray-200 text-gray-900 px-4 py-3.5 rounded-xl focus:outline-none focus:border-black transition font-bold text-sm">
+                            </div>
+                            <div>
+                                <input type="text" id="city" placeholder="City *" required class="w-full bg-gray-50 border-2 border-gray-200 text-gray-900 px-4 py-3.5 rounded-xl focus:outline-none focus:border-black transition font-bold text-sm">
+                            </div>
+                            <div class="relative">
+                                <select class="w-full bg-gray-50 border-2 border-gray-200 text-gray-900 px-4 py-3.5 rounded-xl focus:outline-none focus:border-black transition font-bold text-sm appearance-none cursor-pointer">
+                                    <option>West Bengal</option>
+                                    <option>Maharashtra</option>
+                                    <option>Delhi</option>
+                                    <option>Karnataka</option>
+                                </select>
+                                <i class="fa-solid fa-chevron-down absolute right-4 top-5 text-gray-400 text-xs"></i>
+                            </div>
+                            <div>
+                                <input type="text" id="pin" placeholder="PIN Code *" required class="w-full bg-gray-50 border-2 border-gray-200 text-gray-900 px-4 py-3.5 rounded-xl focus:outline-none focus:border-black transition font-bold text-sm">
+                            </div>
+                            <div>
+                                <input type="tel" id="phone" placeholder="Phone Number *" required class="w-full bg-gray-50 border-2 border-gray-200 text-gray-900 px-4 py-3.5 rounded-xl focus:outline-none focus:border-black transition font-bold text-sm">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Payment Method -->
+                    <div class="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-gray-100">
+                        <h2 class="text-xl font-black tracking-tight uppercase mb-2 flex items-center"><span class="w-6 h-6 rounded-full bg-black text-white text-[10px] flex items-center justify-center mr-3">3</span> Payment</h2>
+                        <p class="text-[10px] font-bold uppercase tracking-widest text-gray-400 mb-6 pl-9"><i class="fa-solid fa-lock text-gray-300 mr-1"></i> All transactions are secure and encrypted.</p>
+                        
+                        <div class="space-y-4">
+                            <!-- UPI / Credit Card Option -->
+                            <label class="flex flex-col sm:flex-row sm:items-center justify-between p-5 border-2 border-black rounded-2xl bg-gray-50 cursor-pointer shadow-sm gap-4">
+                                <div class="flex items-center space-x-4">
+                                    <input type="radio" name="payment" checked class="w-5 h-5 text-black border-gray-300 focus:ring-black accent-black cursor-pointer">
+                                    <span class="font-black text-sm uppercase tracking-wide">Online Payment</span>
+                                </div>
+                                <div class="flex space-x-3 text-2xl items-center pl-9 sm:pl-0">
+                                    <i class="fa-brands fa-cc-visa text-blue-700"></i>
+                                    <i class="fa-brands fa-cc-mastercard text-red-500"></i>
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/UPI-Logo-transparent.png" alt="UPI" class="h-5 object-contain opacity-80">
+                                </div>
+                            </label>
+
+                            <!-- Cash on Delivery Option -->
+                            <label class="flex flex-col sm:flex-row sm:items-center justify-between p-5 border-2 border-gray-200 rounded-2xl hover:border-black transition cursor-pointer">
+                                <div class="flex items-center space-x-4">
+                                    <input type="radio" name="payment" class="w-5 h-5 text-black border-gray-300 focus:ring-black accent-black cursor-pointer">
+                                    <span class="font-black text-sm uppercase tracking-wide">Cash on Delivery</span>
+                                </div>
+                                <div class="flex items-center pl-9 sm:pl-0">
+                                    <i class="fa-solid fa-money-bill-wave text-green-600 text-2xl mr-2"></i>
+                                    <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">(Pay at doorstep)</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Complete Order Button (Desktop) -->
+                    <div class="hidden lg:block pt-4">
+                        <button type="submit" class="w-full bg-black text-white h-16 rounded-2xl font-black text-lg uppercase tracking-widest hover:bg-rose-600 hover:shadow-2xl hover:shadow-rose-600/30 transition-all flex items-center justify-center space-x-3 group">
+                            <i class="fa-solid fa-lock group-hover:scale-110 transition-transform"></i>
+                            <span>Pay ₹1,698 & Place Order</span>
+                        </button>
+                        <p class="text-center text-[10px] font-bold text-gray-400 uppercase tracking-widest mt-4">By placing your order, you agree to our Terms & Privacy Policy.</p>
+                    </div>
+
+                </form>
+            </div>
+
+            <!-- Right Side: Order Summary -->
+            <div class="lg:w-2/5">
+                <div class="bg-white p-6 sm:p-8 rounded-3xl sticky top-28 border border-gray-100 shadow-xl">
+                    <h2 class="text-xl font-black tracking-tight text-gray-900 mb-6 uppercase border-b border-gray-100 pb-4">Order Summary</h2>
+                    
+                    <!-- Items -->
+                    <div class="space-y-6 mb-8 max-h-[40vh] overflow-y-auto pr-2 custom-scrollbar">
+                        <!-- Item 1 -->
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4 relative">
+                                <div class="w-16 h-20 bg-gray-100 rounded-xl overflow-hidden border border-gray-200 relative">
+                                    <span class="absolute -top-2 -right-2 bg-black text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center z-10 shadow-sm">1</span>
+                                    <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=150&q=80" alt="Tee" class="w-full h-full object-cover">
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-sm text-gray-900 truncate max-w-[120px] sm:max-w-[150px]">Classic Black Oversized</h4>
+                                    <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mt-1">L / Black</p>
+                                </div>
+                            </div>
+                            <span class="font-black text-base">₹799</span>
+                        </div>
+                        
+                        <!-- Item 2 -->
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center space-x-4 relative">
+                                <div class="w-16 h-20 bg-gray-100 rounded-xl overflow-hidden border border-gray-200 relative">
+                                    <span class="absolute -top-2 -right-2 bg-black text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center z-10 shadow-sm">1</span>
+                                    <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&w=150&q=80" alt="Tee" class="w-full h-full object-cover">
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-sm text-gray-900 truncate max-w-[120px] sm:max-w-[150px]">Tokyo Drift Anime Tee</h4>
+                                    <p class="text-[10px] font-bold text-gray-500 uppercase tracking-widest mt-1">M / White</p>
+                                </div>
+                            </div>
+                            <span class="font-black text-base">₹899</span>
+                        </div>
+                    </div>
+
+                    <!-- Price Breakdown -->
+                    <div class="border-t border-gray-100 pt-6 space-y-4 text-sm font-bold text-gray-500 mb-6 uppercase tracking-wider">
+                        <div class="flex justify-between">
+                            <span>Subtotal</span>
+                            <span class="text-black text-base">₹1,698</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span>Shipping</span>
+                            <span class="text-green-600 bg-green-50 px-2 py-0.5 rounded">FREE</span>
+                        </div>
+                    </div>
+
+                    <!-- Total -->
+                    <div class="border-t border-gray-100 pt-6 flex justify-between items-end mb-2">
+                        <span class="text-lg font-black uppercase text-gray-400">Total</span>
+                        <div class="text-right">
+                            <span class="text-[10px] text-gray-400 mr-1 block sm:inline">INR</span>
+                            <span class="text-4xl font-black text-rose-600">₹1,698</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Complete Order Button (Mobile Sticky) -->
+            <div class="lg:hidden fixed bottom-0 left-0 w-full bg-white p-4 border-t border-gray-200 shadow-[0_-10px_20px_rgba(0,0,0,0.05)] z-50">
+                <button onclick="document.getElementById('checkout-form').requestSubmit();" class="w-full bg-black text-white h-14 rounded-xl font-black text-sm uppercase tracking-widest hover:bg-rose-600 transition flex items-center justify-center space-x-2">
+                    <i class="fa-solid fa-lock"></i>
+                    <span>Pay ₹1,698 & Order</span>
+                </button>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Simple Secure Footer -->
+    <footer class="bg-white border-t border-gray-200 py-10 mt-10">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="flex justify-center space-x-6 text-gray-400 text-2xl mb-6">
+                <i class="fa-brands fa-cc-visa"></i>
+                <i class="fa-brands fa-cc-mastercard"></i>
+                <i class="fa-brands fa-google-pay"></i>
+                <i class="fa-brands fa-apple-pay"></i>
+            </div>
+            <p class="text-gray-400 text-[10px] font-bold uppercase tracking-widest">© 2026 Crazy T-Shirt. 100% Secure Checkout.</p>
+        </div>
+    </footer>
+
+    <!-- Live Toast Notification -->
+    <div id="toast" class="fixed top-24 right-4 z-50 bg-black text-white px-6 py-4 rounded-xl shadow-2xl flex items-center space-x-4 toast-enter border-l-4 border-black max-w-[90vw] sm:max-w-sm">
+        <div id="toast-icon" class="text-white text-2xl"><i class="fa-solid fa-circle-check"></i></div>
+        <div>
+            <h4 class="font-black text-sm uppercase tracking-widest" id="toast-title">Success</h4>
+            <p class="text-xs text-gray-300 font-medium mt-0.5" id="toast-message">Action completed.</p>
+        </div>
+    </div>
+
+    <!-- Interactive JavaScript -->
+    <script>
+        function showToast(title, message, borderColor, iconHtml) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-title').innerText = title;
+            document.getElementById('toast-message').innerText = message;
+            document.getElementById('toast-icon').innerHTML = iconHtml;
+            
+            toast.className = `fixed top-24 right-4 z-50 bg-black text-white px-6 py-4 rounded-xl shadow-2xl flex items-center space-x-4 border-l-4 ${borderColor} max-w-[90vw] sm:max-w-sm toast-enter`;
+            
+            setTimeout(() => { toast.classList.remove('toast-enter'); toast.classList.add('toast-show'); }, 10);
+            setTimeout(() => { toast.classList.remove('toast-show'); toast.classList.add('toast-hide'); }, 4000);
+        }
+
+        function showErrorToast() {
+            // Check if form is valid before showing demo "order placed" message
+            const form = document.getElementById('checkout-form');
+            if (form.checkValidity()) {
+                showToast('Order Processing', 'Redirecting to secure payment gateway...', 'border-green-500', '<i class="fa-solid fa-spinner animate-spin text-green-500"></i>');
+                // In real site, this would redirect.
+            } else {
+                showToast('Missing Details', 'Please fill in all required shipping fields.', 'border-rose-600', '<i class="fa-solid fa-triangle-exclamation text-rose-500"></i>');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Edit Collection | Crazy T-Shirt</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Outfit', sans-serif; overflow-x: hidden; }
+        /* Neon Glow Effect for Anime Vibe */
+        .neon-text { text-shadow: 0 0 10px rgba(225, 29, 72, 0.8), 0 0 20px rgba(225, 29, 72, 0.4); }
+        /* Toast Animation */
+        .toast-enter { transform: translateY(100%); opacity: 0; }
+        .toast-show { transform: translateY(0); opacity: 1; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .toast-hide { transform: translateY(100%); opacity: 0; transition: all 0.3s ease-in; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900 selection:bg-rose-500 selection:text-white pb-20 md:pb-0">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-rose-600 text-white text-[10px] sm:text-xs py-2.5 px-4 flex justify-between items-center font-bold tracking-widest uppercase relative z-50">
+        <span class="hidden sm:inline-block"><i class="fa-solid fa-bolt mr-2 text-black"></i> Exclusive Anime Drops</span>
+        <span class="mx-auto sm:mx-0 text-black">🔥 USE CODE: <span class="text-white">OTAKU20</span> FOR 20% OFF</span>
+    </div>
+
+    <!-- Navigation Bar (Fully Linked) -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <button class="md:hidden text-2xl hover:text-rose-600 transition"><i class="fa-solid fa-arrow-left" onclick="history.back()"></i></button>
+            
+            <!-- Brand Logo -->
+            <a href="index.html" class="flex items-center gap-1 group">
+                <svg class="w-8 h-8 text-rose-600 group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                <span class="text-3xl font-black tracking-tighter uppercase">CRAZY<span class="text-rose-600">.</span></span>
+            </a>
+
+            <nav class="hidden md:flex items-center space-x-8 font-bold text-sm tracking-wide uppercase">
+                <a href="index.html" class="hover:text-rose-600 transition">Home</a>
+                <a href="shop.html" class="hover:text-rose-600 transition">Shop All</a>
+                <a href="anime.html" class="text-rose-600 border-b-2 border-rose-600 pb-1">Anime Edit</a>
+                <a href="about.html" class="hover:text-rose-600 transition">About Us</a>
+            </nav>
+            <div class="flex items-center space-x-5 text-xl">
+                <a href="shop.html" class="hover:text-rose-600 transition hidden sm:block"><i class="fa-solid fa-magnifying-glass"></i></a>
+                <a href="profile.html" class="hover:text-rose-600 transition hidden sm:block"><i class="fa-regular fa-user"></i></a>
+                <a href="wishlist.html" class="hover:text-rose-600 transition hidden sm:block relative">
+                    <i class="fa-regular fa-heart"></i>
+                    <span class="absolute -top-1.5 -right-2 bg-black text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold shadow-sm">4</span>
+                </a>
+                <a href="cart.html" class="hover:text-rose-600 transition relative">
+                    <i class="fa-bag-shopping fa-solid"></i>
+                    <span id="nav-cart-count" class="absolute -top-1.5 -right-2 bg-rose-600 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold shadow-sm">2</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Anime Hero Section (Dark & Cinematic) -->
+    <section class="relative bg-black py-20 lg:py-32 overflow-hidden flex items-center justify-center min-h-[60vh]">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1560942485-b2a11cc13456?auto=format&fit=crop&w=1920&q=80" alt="Tokyo Neon Streets" class="w-full h-full object-cover opacity-40">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+        </div>
+        
+        <div class="relative z-10 text-center px-4 max-w-4xl mx-auto space-y-6">
+            <span class="bg-rose-600 text-white text-xs font-black px-4 py-1.5 rounded-full uppercase tracking-widest shadow-[0_0_15px_rgba(225,29,72,0.6)]">Premium Collection</span>
+            <h1 class="text-5xl sm:text-7xl font-black tracking-tighter text-white uppercase italic">
+                THE <span class="text-rose-500 neon-text">ANIME</span> EDIT.
+            </h1>
+            <p class="text-gray-300 text-lg sm:text-xl font-medium max-w-2xl mx-auto leading-relaxed">
+                Wear your passion. High-density puff prints, Japanese streetwear aesthetics, and strictly limited drops. Once they are gone, they are gone.
+            </p>
+        </div>
+    </section>
+
+    <!-- Anime Product Grid -->
+    <section class="py-20 bg-gray-50 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex justify-between items-end mb-12">
+            <div>
+                <h2 class="text-3xl font-black tracking-tight uppercase">Latest Drops</h2>
+                <p class="text-gray-500 text-sm mt-2 font-medium">Exclusive anime inspired oversized tees[cite: 5].</p>
+            </div>
+            <p class="text-sm font-bold text-rose-600 uppercase tracking-widest hidden sm:block">Showing 4 Styles</p>
+        </div>
+
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8">
+            
+            <!-- Product 1 -->
+            <div class="group cursor-pointer bg-white p-3 rounded-2xl shadow-sm border border-gray-100" onclick="window.location.href='product.html'">
+                <div class="relative bg-gray-200 rounded-xl overflow-hidden aspect-[4/5]">
+                    <span class="absolute top-3 left-3 bg-black text-white text-[10px] font-bold px-2.5 py-1 rounded-md uppercase z-10 shadow-md">New</span>
+                    <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?auto=format&fit=crop&w=600&q=80" alt="Anime Tee" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    <button onclick="event.stopPropagation(); addToCart('Tokyo Drift Oversized', 899)" class="absolute bottom-3 right-3 bg-white text-black w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:bg-rose-600 hover:text-white transition-all z-10 text-base">
+                        <i class="fa-solid fa-cart-plus"></i>
+                    </button>
+                </div>
+                <div class="mt-4 text-center sm:text-left">
+                    <h3 class="font-bold text-sm sm:text-base text-gray-900 group-hover:text-rose-600 transition truncate">Tokyo Drift Oversized</h3>
+                    <p class="text-gray-400 text-xs font-medium mt-0.5">Puff Print • 240 GSM</p>
+                    <div class="flex items-center space-x-3 pt-2">
+                        <span class="font-black text-lg text-black">₹899</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="group cursor-pointer bg-white p-3 rounded-2xl shadow-sm border border-gray-100" onclick="window.location.href='product.html'">
+                <div class="relative bg-gray-200 rounded-xl overflow-hidden aspect-[4/5]">
+                    <span class="absolute top-3 left-3 bg-rose-600 text-white text-[10px] font-bold px-2.5 py-1 rounded-md uppercase z-10 shadow-md">Bestseller</span>
+                    <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&w=600&q=80" alt="Anime Graphic" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    <button onclick="event.stopPropagation(); addToCart('Shinobi Street Graphic', 799)" class="absolute bottom-3 right-3 bg-white text-black w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:bg-rose-600 hover:text-white transition-all z-10 text-base">
+                        <i class="fa-solid fa-cart-plus"></i>
+                    </button>
+                </div>
+                <div class="mt-4 text-center sm:text-left">
+                    <h3 class="font-bold text-sm sm:text-base text-gray-900 group-hover:text-rose-600 transition truncate">Shinobi Street Graphic</h3>
+                    <p class="text-gray-400 text-xs font-medium mt-0.5">Acid Wash • 220 GSM</p>
+                    <div class="flex items-center space-x-2 pt-2">
+                        <span class="font-black text-lg text-rose-600">₹799</span>
+                        <span class="text-gray-400 text-xs line-through font-bold">₹1,299</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="group cursor-pointer bg-white p-3 rounded-2xl shadow-sm border border-gray-100" onclick="window.location.href='product.html'">
+                <div class="relative bg-gray-200 rounded-xl overflow-hidden aspect-[4/5]">
+                    <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=600&q=80" alt="Black Anime Tee" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    <button onclick="event.stopPropagation(); addToCart('Cyberpunk Edgerunner', 999)" class="absolute bottom-3 right-3 bg-white text-black w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:bg-rose-600 hover:text-white transition-all z-10 text-base">
+                        <i class="fa-solid fa-cart-plus"></i>
+                    </button>
+                </div>
+                <div class="mt-4 text-center sm:text-left">
+                    <h3 class="font-bold text-sm sm:text-base text-gray-900 group-hover:text-rose-600 transition truncate">Cyberpunk Edgerunner</h3>
+                    <p class="text-gray-400 text-xs font-medium mt-0.5">Black Solid • 240 GSM</p>
+                    <div class="flex items-center space-x-3 pt-2">
+                        <span class="font-black text-lg text-black">₹999</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="group cursor-pointer bg-white p-3 rounded-2xl shadow-sm border border-gray-100" onclick="window.location.href='product.html'">
+                <div class="relative bg-gray-200 rounded-xl overflow-hidden aspect-[4/5]">
+                    <span class="absolute top-3 left-3 bg-black text-white text-[10px] font-bold px-2.5 py-1 rounded-md uppercase z-10 shadow-md">Limited</span>
+                    <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=600&q=80" alt="Mecha Anime" class="w-full h-full object-cover group-hover:scale-105 transition duration-700">
+                    <button onclick="event.stopPropagation(); addToCart('Vintage Mecha Print', 849)" class="absolute bottom-3 right-3 bg-white text-black w-10 h-10 rounded-full flex items-center justify-center shadow-lg hover:bg-rose-600 hover:text-white transition-all z-10 text-base">
+                        <i class="fa-solid fa-cart-plus"></i>
+                    </button>
+                </div>
+                <div class="mt-4 text-center sm:text-left">
+                    <h3 class="font-bold text-sm sm:text-base text-gray-900 group-hover:text-rose-600 transition truncate">Vintage Mecha Print</h3>
+                    <p class="text-gray-400 text-xs font-medium mt-0.5">Oversized Fit • 240 GSM</p>
+                    <div class="flex items-center space-x-3 pt-2">
+                        <span class="font-black text-lg text-black">₹849</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Full Footer -->
+    <footer class="bg-black text-white pt-20 pb-12 border-t-4 border-rose-600 mt-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16 border-b border-gray-800 pb-16">
+            <div class="space-y-6">
+                <!-- Footer Logo -->
+                <a href="index.html" class="flex items-center gap-1 group">
+                    <svg class="w-8 h-8 text-rose-600" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                    <span class="text-3xl font-black tracking-tighter uppercase">CRAZY<span class="text-rose-600">.</span></span>
+                </a>
+                <p class="text-gray-400 text-sm font-medium leading-relaxed">
+                    Redefining streetwear for the next generation[cite: 5]. Bold designs, unmatched quality.
+                </p>
+            </div>
+            
+            <div>
+                <h4 class="font-black text-sm tracking-widest uppercase mb-6 text-white">Help & Support</h4>
+                <ul class="space-y-4 text-sm font-medium text-gray-400">
+                    <li><a href="profile.html" class="hover:text-rose-500 transition">Track Your Order</a></li>
+                    <li><a href="contact.html" class="hover:text-rose-500 transition">Contact Us</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="font-black text-sm tracking-widest uppercase mb-6 text-white">Categories</h4>
+                <ul class="space-y-4 text-sm font-medium text-gray-400">
+                    <li><a href="shop.html" class="hover:text-rose-500 transition">All Products</a></li>
+                    <li><a href="anime.html" class="hover:text-rose-500 transition text-rose-500">Anime Collection</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 class="font-black text-sm tracking-widest uppercase mb-6 text-white">Crazy Newsletter</h4>
+                <div class="flex h-12">
+                    <input type="email" placeholder="Your email address" class="bg-gray-900 text-white px-4 py-3 text-sm rounded-l-xl focus:outline-none w-full border border-gray-800 focus:border-rose-600 transition font-bold">
+                    <button class="bg-rose-600 px-6 text-sm font-black rounded-r-xl hover:bg-rose-700 transition uppercase tracking-widest">Join</button>
+                </div>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <p class="text-gray-500 text-xs font-bold uppercase tracking-widest">© 2026 Crazy T-Shirt. All Rights Reserved[cite: 5].</p>
+        </div>
+    </footer>
+
+    <!-- Mobile Bottom Navigation Bar -->
+    <div class="md:hidden fixed bottom-0 left-0 w-full bg-white border-t border-gray-200 z-50 px-6 py-3 flex justify-between items-center shadow-[0_-4px_10px_rgba(0,0,0,0.05)]">
+        <a href="index.html" class="flex flex-col items-center text-gray-400 hover:text-black"><i class="fa-solid fa-house text-xl"></i><span class="text-[9px] font-bold mt-1 uppercase">Home</span></a>
+        <a href="shop.html" class="flex flex-col items-center text-gray-400 hover:text-black"><i class="fa-solid fa-border-all text-xl"></i><span class="text-[9px] font-bold mt-1 uppercase">Shop</span></a>
+        <a href="wishlist.html" class="flex flex-col items-center text-gray-400 hover:text-black relative"><i class="fa-regular fa-heart text-xl"></i><span class="text-[9px] font-bold mt-1 uppercase">Wishlist</span></a>
+        <a href="cart.html" class="flex flex-col items-center text-gray-400 hover:text-black relative"><i class="fa-solid fa-bag-shopping text-xl"></i><span id="mobile-cart-count" class="absolute -top-1 -right-2 bg-rose-600 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">2</span><span class="text-[9px] font-bold mt-1 uppercase">Cart</span></a>
+        <a href="profile.html" class="flex flex-col items-center text-gray-400 hover:text-black"><i class="fa-regular fa-user text-xl"></i><span class="text-[9px] font-bold mt-1 uppercase">Profile</span></a>
+    </div>
+
+    <!-- Live Toast Notification -->
+    <div id="toast" class="fixed top-24 right-4 z-50 bg-black text-white px-6 py-4 rounded-xl shadow-2xl flex items-center space-x-4 toast-enter border-l-4 border-rose-600 max-w-[90vw] sm:max-w-sm">
+        <div id="toast-icon" class="text-rose-500 text-2xl"><i class="fa-solid fa-circle-check"></i></div>
+        <div>
+            <h4 class="font-black text-sm uppercase tracking-widest" id="toast-title">Success</h4>
+            <p class="text-xs text-gray-300 font-medium mt-0.5" id="toast-message">Item added to cart.</p>
+        </div>
+    </div>
+
+    <script>
+        let cartCount = 2;
+        function showToast(title, message, iconHtml) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toast-title').innerText = title;
+            document.getElementById('toast-message').innerText = message;
+            document.getElementById('toast-icon').innerHTML = iconHtml;
+            toast.className = `fixed top-24 right-4 z-50 bg-black text-white px-6 py-4 rounded-xl shadow-2xl flex items-center space-x-4 border-l-4 border-rose-600 max-w-[90vw] sm:max-w-sm toast-enter`;
+            
+            setTimeout(() => { toast.classList.remove('toast-enter'); toast.classList.add('toast-show'); }, 10);
+            setTimeout(() => { toast.classList.remove('toast-show'); toast.classList.add('toast-hide'); }, 3000);
+        }
+
+        function addToCart(name, price) {
+            cartCount++;
+            document.getElementById('nav-cart-count').innerText = cartCount;
+            if(document.getElementById('mobile-cart-count')) document.getElementById('mobile-cart-count').innerText = cartCount;
+            showToast('Added to Cart', `${name} added successfully.`, '<i class="fa-solid fa-cart-shopping text-rose-500"></i>');
+        }
+    </script>
+</body>
+</html>
